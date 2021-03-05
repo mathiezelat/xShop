@@ -2,6 +2,32 @@
   text-align: center;
 }
 
+/*///////////////////////////MyStyle///////////////////////////////////*/
+.navbar{
+  display: flex;
+  list-style: none;
+  background-color: #282c34;
+  align-content: center;
+  margin: 0;
+  padding-inline-start: 15vw;
+}
+.navbar li a{
+    text-decoration: none;
+    color: white;
+}
+.navbar li a:hover{
+  color: rgb(193, 205, 216);
+}
+.navbar-l{
+  margin: 0;
+}
+.navbar-a{
+  display: block;
+  padding: 20px;
+  margin: 0px 10px;
+}
+/*///////////////////////////////////////////////////////////////////*/
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
