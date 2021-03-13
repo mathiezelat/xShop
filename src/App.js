@@ -1,12 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-import { NavBar } from './components/NavBar';
+import './App.scss';
+import NavBar from './components/NavBar';
+import ItemListContainer from './components/ItemListContainer'
 
 function App() {
   return (
     <div className="App">
+      <div className="App-fondo">
       <NavBar />
-      <h2>Listo</h2>
+      <ItemListContainer name="Productos Destacados"/>
+      </div>
     </div>
   );
 }

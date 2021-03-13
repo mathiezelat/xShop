@@ -1,0 +1,177 @@
+/*/////////////////////////Fonts//////////////////////////////////////*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/*/////////////////////////////////////////////////////////////////////*/
+
+$background-menu: #232f3e;
+$font-menu: 'Poppins', sans-serif;
+$color-menu: rgb(226, 226, 226);
+$color-menu-hover: rgb(200, 200, 200);
+
+/*///////////////////////////MyStyle///////////////////////////////////*/
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+
+header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: $background-menu;
+    font-family: $font-menu;
+}
+
+.logo{
+    width: 100px;
+    margin-top: 5px;
+    position: relative;
+    z-index: 2;
+    a{
+        img{
+            object-fit: contain;
+        }
+    }
+}
+.nav-links{
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+    align-items: center;
+    li{
+        list-style: none;
+    }
+    a{
+        color: $color-menu;
+        text-decoration: none;
+        letter-spacing: 2px;
+        font-weight: 500;
+        font-size: 14px;
+        &:hover{
+            color: $color-menu-hover;
+        }
+    }
+}
+
+.burger{
+    display: none;
+    cursor: pointer;
+    div{
+        width: 25px;
+        height: 3px;
+        background-color: $color-menu;
+        margin: 5px;
+        transition: all 0.3s ease;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+}
+}
+/*///////////////////////////////////////////////////////////////////*/
+
+@media screen and (max-width:1024px){
+    .nav-links{
+        width: 50%;
+        li{
+            list-style: none;
+        }
+        a{
+            color: $color-menu;
+            text-decoration: none;
+            letter-spacing: 2px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+    }
+}
+@media screen and (max-width:768px){
+    body{
+        overflow-x: hidden;
+    }
+    nav{
+        overflow-x: hidden;
+        justify-content: space-between;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .nav-links{
+        display: flex;
+        visibility: hidden;
+        position: absolute;
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background-color: $background-menu;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 0%;
+        transition: width 0.2s ease, visibility 0.5s ease-in;
+        -webkit-transition: width 0.2s ease, visibility 0.5s ease-in;
+        -moz-transition: width 0.2s ease, visibility 0.5s ease-in;
+        -ms-transition: width 0.2s ease, visibility 0.5s ease-in;
+        -o-transition: width 0.2s ease, visibility 0.5s ease-in;
+        li{
+            opacity: 0;
+            display: none;
+        }
+}   
+    .burger{
+        display: block;
+    }
+}
+.nav-active{
+    display: flex;
+    visibility: visible;
+
+}
+.nav-active-mov{
+    width: 85%;
+    li{
+        display: inherit;
+    }
+}
+
+@keyframes navActive{
+    from{
+        width: 25%;
+    }
+    to{
+        width: 85%;
+    }
+}
+
+@keyframes navLinkFade{
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+.toggle{
+    .line1{
+        transform: rotate(-45deg) translate(-5px,6px);
+}
+    .line2{
+        opacity: 0;
+    }
+    .line3{
+        transform: rotate(45deg) translate(-5px,-6px);
+}
+}
