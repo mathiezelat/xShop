@@ -13,10 +13,10 @@ const NavBar = () =>{
                     <a href="#"><img src={logo} alt="xShop Logo"/></a>
                 </div>
                 <ul className="nav-links">
-                    <li><a href="#" onMouseEnter={navCollapse} >Home</a></li>
-                    <li><a href="#" onMouseEnter={navCollapse} >About</a></li>
-                    <li><a href="#" onMouseEnter={navCollapse} >Product</a></li>
-                    <li><a href="#" onMouseEnter={navCollapse} >Help</a></li>
+                    <li><a href="#" onMouseEnter={navCollapse} >Inicio</a></li>
+                    <li><a href="#" onMouseEnter={navCollapse} >Nosotros</a></li>
+                    <li><a href="#" onMouseEnter={navCollapse} >Productos</a></li>
+                    <li><a href="#" onMouseEnter={navCollapse} >Ayuda</a></li>
                     <CartWidget />
                 </ul>
                 <div className="burger" onClick={navSlide}>
