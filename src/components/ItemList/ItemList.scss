@@ -1,0 +1,9 @@
+.item-list{
+    display: flex;
+    flex-direction: row;
+    margin: 5px;
+    padding: 5px;
+    width: 95%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
