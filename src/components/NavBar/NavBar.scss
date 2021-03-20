@@ -51,6 +51,7 @@ nav{
     align-items: center;
     li{
         list-style: none;
+        margin: 10px;
     }
     a{
         color: $color-menu;
@@ -127,22 +128,25 @@ nav{
             opacity: 0;
             display: none;
         }
-}   
+        a{
+            font-size: 17px;
+        }
+    }
     .burger{
         display: block;
     }
-}
-.nav-active{
-    display: flex;
-    visibility: visible;
-
-}
-.nav-active-mov{
-    width: 85%;
-    li{
-        display: inherit;
+    .nav-active{
+        display: flex;
+        visibility: visible;
+    
     }
-}
+    .nav-active-mov{
+        width: 85%;
+        li{
+            display: inherit;
+        }
+    }
+}   
 
 @keyframes navActive{
     from{

@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from "react";
-import './ItemListContainer.scss'
-import ItemList from '../ItemList'
+import React, {useEffect, useState} from "react";
+import ItemDetail from "../ItemDetail";
 
 const infoItems = [
     {
@@ -32,28 +31,27 @@ const infoItems = [
         img: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     }
 ]
-
-const ItemListContainer = (props)=> {
-    const [items, setItems] = useState([])
+function getItems(item){
+    return new Promise((resolve, reject)=>{
+        setTimeout(() => {
+            resolve(infoItems[item])
+        }, 2000);
+    })
+}
+const ItemDetailContainer = ({item})=>{
+    const [items, setItems] = useState([]);
     useEffect(() => {
-        const prom = new Promise((resolve,reject)=>{
-            setTimeout(() => {
-                resolve(infoItems)
-            }, 2000);
-        })
+        const prom = getItems(item)
         prom.then((res)=>{
             setItems(res)
         }
         )
-    }, [])
-    return (
-        <div className="container-items-list">
-        <h2>{props.name}</h2>
-            <div className="item-list-container">
-            <ItemList items={items}/>
-            </div>
+    })
+    return(
+        <div>
+            <ItemDetail item={items}/>
         </div>
     )
 }
 
-export default ItemListContainer;
+export default ItemDetailContainer;
