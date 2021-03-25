@@ -4,8 +4,8 @@ Es una página **e-commerce** inspirada en otras páginas del mismo estilo, mi i
 
 ## Construido con 🛠️
 
-* ***ReactJS*** - _Framework_ usado
-* ***SCSS*** - _SCSS_ para dar estilos
+* ***ReactJS*** - _Libreria_ usada
+* ***SCSS*** - para dar estilos
 
 ## Autor ✒️
 
