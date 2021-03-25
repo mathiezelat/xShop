@@ -2,18 +2,20 @@ import React from "react";
 import './ItemDetail.scss';
 
 
+
 function FormatNumber(number) {
     return (
+(number) ? 
     <span style={{ color: "green" }}>
         {new Intl.NumberFormat("ES-AR", {
         style: "currency",
         currency: "ARS"
         }).format(number)}
     </span>
+    : null
     );
 }
-
-const ItemDetail = ({item})=>{
+const ItemDetail = ({item = {img: '', name: 'Error', price: 0, desc:'Producto no encontrado'}})=>{
     return(
         <div className="item-detail">
             <div className="item-detail-image-contain">

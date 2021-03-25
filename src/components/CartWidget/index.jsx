@@ -1,10 +1,12 @@
 import React from "react";
-import iconCart from './shop-bag-icon.svg';
 import './CartWidget.scss';
+
+import {Link} from 'react-router-dom';
+
 
 const CartWidget = ()=>{
     return(
-        <li><a href="#" className="icon-shop-fondo"><img className="icon-shop" src={iconCart} alt="Icon Shop" /></a></li>
+        <li><Link to='/cart' className="icon-shop-fondo"><img className="icon-shop" src="/images/shop-bag-icon.svg" alt="Icon Shop" /></Link></li>
     )
 }
 

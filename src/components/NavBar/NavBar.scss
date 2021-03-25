@@ -35,7 +35,8 @@ nav{
 
 .logo{
     width: 100px;
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     position: relative;
     z-index: 2;
     a{
@@ -80,6 +81,9 @@ nav{
         -o-transition: all 0.3s ease;
 }
 }
+.active{
+        color: $color-menu-hover !important;
+}
 /*///////////////////////////////////////////////////////////////////*/
 
 @media screen and (max-width:1024px){
@@ -100,6 +104,18 @@ nav{
 @media screen and (max-width:768px){
     body{
         overflow-x: hidden;
+    }
+    .logo{
+        width: 100px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 2;
+        a{
+            img{
+                object-fit: contain;
+            }
+        }
     }
     nav{
         overflow-x: hidden;
@@ -129,7 +145,7 @@ nav{
             display: none;
         }
         a{
-            font-size: 17px;
+            font-size: 15px;
         }
     }
     .burger{
@@ -141,7 +157,7 @@ nav{
     
     }
     .nav-active-mov{
-        width: 85%;
+        width: 70%;
         li{
             display: inherit;
         }

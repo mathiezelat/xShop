@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import './ItemListContainer.scss'
 import ItemList from '../ItemList'
 
+import { useParams } from 'react-router-dom';
+
 const infoItems = [
     {
         id: 1,
@@ -14,7 +16,7 @@ const infoItems = [
         id: 2,
         name: "iMac",
         price: 400000,
-        desc: "Es un un iMac 27",
+        desc: "Es un iMac 27",
         img: "https://www.classphoto.es/blog/wp-content/uploads/2015/11/imac__vector__by_thegoldenbox-d6fjv1d.png"
     },
     {
@@ -34,18 +36,20 @@ const infoItems = [
 ]
 
 const ItemListContainer = (props)=> {
-    const [items, setItems] = useState([])
+    const [items, setItems] = useState([]);
+    const {categoryId} = useParams()
     useEffect(() => {
         const prom = new Promise((resolve,reject)=>{
             setTimeout(() => {
                 resolve(infoItems)
-            }, 2000);
+            }, 1000);
         })
         prom.then((res)=>{
             setItems(res)
         }
         )
-    }, [])
+        return;
+    }, [categoryId])
     return (
         <div className="container-items-list">
         <h2>{props.name}</h2>

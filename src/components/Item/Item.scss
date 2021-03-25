@@ -3,7 +3,10 @@
 $font-primario: 'Poppins', sans-serif;
 
 /////////////////////////////////////////////////////////
+.link-styles{
+        text-decoration:none;
 
+}
 .item{
     display: flex;
     justify-content: center;
@@ -26,17 +29,20 @@ $font-primario: 'Poppins', sans-serif;
     -ms-transition: box-shadow 0.1s;
     -o-transition: box-shadow 0.1s;
     overflow: hidden;
+
     &:hover{
         box-shadow: 0px 5px 13px 0px rgb(0 0 0 / 15%);
     }
     h3{
         font-weight: 500;
+        color: black;
     }
     p{
         font-weight: 400;
         font-size: 13px;
         margin-left: 5px;
         margin-right: 5px;
+        color: black;
     }
 }
 .item-content{
@@ -111,6 +117,7 @@ $font-primario: 'Poppins', sans-serif;
 }
 @media screen and (max-width:768px){
     .item{
-        width: 210px;
+        width: 200px;
+        margin: 1px;
     }
 }

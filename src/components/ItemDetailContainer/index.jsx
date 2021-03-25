@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
 import ItemDetail from "../ItemDetail";
+import Error404 from "../Error404";
+import { useParams } from 'react-router-dom';
 
-const infoItems = [
+const data = ([
     {
         id: 1,
         name: "Apple MacBook Pro",
@@ -13,7 +15,7 @@ const infoItems = [
         id: 2,
         name: "iMac",
         price: 400000,
-        desc: "Es un un iMac 27",
+        desc: "Es un iMac 27",
         img: "https://www.classphoto.es/blog/wp-content/uploads/2015/11/imac__vector__by_thegoldenbox-d6fjv1d.png"
     },
     {
@@ -30,26 +32,29 @@ const infoItems = [
         desc: "Es un iPhone 12 de 512 GB",
         img: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-pro-max-graphite-hero?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604021658000"
     }
-]
-function getItems(item){
+])
+
+function getItems(id){
     return new Promise((resolve, reject)=>{
         setTimeout(() => {
-            resolve(infoItems[item])
-        }, 2000);
+            resolve(data.filter(i => i.id === parseInt(id))[0])
+        }, 1000);
     })
 }
-const ItemDetailContainer = ({item})=>{
-    const [items, setItems] = useState([]);
+const ItemDetailContainer = ()=>{
+    const [item, setItems] = useState([]);
+    const {itemId} = useParams()
     useEffect(() => {
-        const prom = getItems(item)
-        prom.then((res)=>{
-            setItems(res)
+        const promesa = getItems(itemId)
+        promesa.then((respuesta)=>{
+            setItems(respuesta)
         }
-        )
-    })
+        );
+        return;
+    }, [itemId])
     return(
         <div>
-            <ItemDetail item={items}/>
+            {item ? <ItemDetail item={item}/> : <Error404 /> }
         </div>
     )
 }

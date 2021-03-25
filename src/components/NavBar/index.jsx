@@ -1,22 +1,22 @@
 import React from "react";
 import './NavBar.scss';
 import navSlide from './navSlideApp.js';
-import navCollapse from './navCollapse.js';
 import CartWidget from '../CartWidget/index';
-import logo from './logo.svg';
+
+import {NavLink} from 'react-router-dom';
 
 const NavBar = () =>{
     return (
         <header>
             <nav>
                 <div className="logo">
-                    <a href="#"><img src={logo} alt="xShop Logo"/></a>
+                    <NavLink to='/'><img src="/images/logo.svg" alt="xShop Logo"/></NavLink>
                 </div>
                 <ul className="nav-links">
-                    <li><a href="#" onMouseEnter={navCollapse} >Inicio</a></li>
-                    <li><a href="#" onMouseEnter={navCollapse} >Nosotros</a></li>
-                    <li><a href="#" onMouseEnter={navCollapse} >Productos</a></li>
-                    <li><a href="#" onMouseEnter={navCollapse} >Ayuda</a></li>
+                    <li><NavLink to='/' exact activeClassName="active" >Inicio</NavLink></li>
+                    <li><NavLink to='/nosotros' activeClassName="active" >Nosotros</NavLink></li>
+                    <li><NavLink to={`/category/1`} activeClassName="active" >Productos</NavLink></li>
+                    <li><NavLink to='/ayuda' activeClassName="active" >Ayuda</NavLink></li>
                     <CartWidget />
                 </ul>
                 <div className="burger" onClick={navSlide}>
