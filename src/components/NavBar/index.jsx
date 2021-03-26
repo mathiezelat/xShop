@@ -1,6 +1,7 @@
 import React from "react";
 import './NavBar.scss';
 import navSlide from './navSlideApp.js';
+import subNavEnter from './subNavEnter.js';
 import CartWidget from '../CartWidget/index';
 
 import {NavLink} from 'react-router-dom';
@@ -14,8 +15,15 @@ const NavBar = () =>{
                 </div>
                 <ul className="nav-links">
                     <li><NavLink to='/' exact activeClassName="active" >Inicio</NavLink></li>
+                    <li className="sub-nav"><NavLink to='#' activeClassName="no" onMouseDown={subNavEnter}>Categorias<img className="arrow-expand" src="/images/arrow.svg" alt=""/></NavLink>
+                    <ul className="sub-nav-links">
+                        <li><NavLink to={`/category/iMac`} onClick={subNavEnter}>iMac</NavLink></li>
+                        <li><NavLink to={`/category/MacBook`} onClick={subNavEnter}>MacBook</NavLink></li>
+                        <li><NavLink to={`/category/iPhone`} onClick={subNavEnter}>iPhone</NavLink></li>
+                        <li><NavLink to={`/category/Watch`} onClick={subNavEnter}>Watch</NavLink></li>
+                    </ul>
+                    </li>
                     <li><NavLink to='/nosotros' activeClassName="active" >Nosotros</NavLink></li>
-                    <li><NavLink to={`/category/1`} activeClassName="active" >Productos</NavLink></li>
                     <li><NavLink to='/ayuda' activeClassName="active" >Ayuda</NavLink></li>
                     <CartWidget />
                 </ul>

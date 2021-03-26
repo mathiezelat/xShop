@@ -19,7 +19,7 @@ const App = () => {
         </Route>
 
         <Route path='/category/:categoryId'>
-          <ItemListContainer name="Productos"/>
+          <ItemListContainer name="Categoria"/>
         </Route>
 
         <Route path='/item/:itemId'>
