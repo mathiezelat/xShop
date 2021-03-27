@@ -83,7 +83,7 @@ const ItemListContainer = ({name})=> {
     const [items, setItems] = useState([]);
     const [load, setLoad] = useState('Cargando')
     const [title, setTitle] = useState(null)
-    const {categoryId} = useParams(null)
+    const {categoryId} = useParams()
     useEffect(() => {
         if (categoryId) {
             const promesa = getItems(categoryId)
@@ -109,7 +109,7 @@ const ItemListContainer = ({name})=> {
             setLoad('Cargando()')
             setItems([])
         };
-    }, [categoryId])
+    }, [categoryId, name])
     // if (items.length === 0){
     //     return <h1>Hola</h1>
     // }
