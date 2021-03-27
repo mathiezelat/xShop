@@ -79,16 +79,18 @@ function getItems(category){
         }, 500);
     })
 }
-const ItemListContainer = (props)=> {
+const ItemListContainer = ({name})=> {
     const [items, setItems] = useState([]);
     const [load, setLoad] = useState('Cargando')
-    const {categoryId} = useParams()
+    const [title, setTitle] = useState(null)
+    const {categoryId} = useParams(null)
     useEffect(() => {
         if (categoryId) {
             const promesa = getItems(categoryId)
             promesa.then((respuesta)=>{
                 setItems(respuesta)
                 setLoad(<Error404/>)
+                setTitle(<h2>{name} {categoryId}</h2>)
             }
             )
         } else {
@@ -97,16 +99,23 @@ const ItemListContainer = (props)=> {
                     resolve(data)
                 }, 1000);
             })
-            prom.then((res)=>{
-                setItems(res)
+            prom.then((respuesta)=>{
+                setItems(respuesta)
+                setTitle(<h2>{name} {categoryId}</h2>)
             }
             )
         }
-        return;
+        return () => {
+            setLoad('Cargando()')
+            setItems([])
+        };
     }, [categoryId])
+    // if (items.length === 0){
+    //     return <h1>Hola</h1>
+    // }
     return (
         <div className="container-items-list">
-            {items[0] ? <h2>{props.name} {categoryId}</h2> : null }
+            {items[0] ? title : null}
             <div className="item-list-container">
             {items[0] ? <ItemList items={items} /> : <>{load}</> }
             </div>

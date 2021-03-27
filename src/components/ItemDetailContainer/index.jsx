@@ -78,19 +78,21 @@ function getItems(id){
     })
 }
 const ItemDetailContainer = ()=>{
-    const [item, setItems] = useState([]);
+    const [item, setItems] = useState();
+    const [load, setLoad] = useState('cargando');
     const {itemId} = useParams()
     useEffect(() => {
         const promesa = getItems(itemId)
         promesa.then((respuesta)=>{
             setItems(respuesta)
+            setLoad(<Error404 />)
         }
         );
         return;
     }, [itemId])
     return(
         <div>
-            {item ? <ItemDetail item={item}/> : <Error404 /> }
+            {item ? <ItemDetail item={item}/> : load }
         </div>
     )
 }
