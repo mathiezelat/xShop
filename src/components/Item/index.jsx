@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import './Item.scss'
 
 
-function FormatNumber(number) {
+const FormatNumber = (number) => {
     return (
 (number) ? 
     <span style={{ color: "green" }}>
@@ -34,7 +34,7 @@ const Item = ({item})=> {
                         <p>{FormatNumber(item.price)}</p>
                     </div>
                     <div className="desc-item">
-                        <p>{item.desc}</p>
+                        <p>{item.info}</p>
                     </div>
                     </div>
                 </div>

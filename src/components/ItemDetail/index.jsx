@@ -3,15 +3,15 @@ import './ItemDetail.scss';
 
 
 
-function FormatNumber(number) {
+const FormatNumber = (number) => {
     return (
-(number) ? 
-    <span style={{ color: "green" }}>
-        {new Intl.NumberFormat("ES-AR", {
-        style: "currency",
-        currency: "ARS"
-        }).format(number)}
-    </span>
+    (number) ? 
+        <span style={{ color: "green" }}>
+            {new Intl.NumberFormat("ES-AR", {
+            style: "currency",
+            currency: "ARS"
+            }).format(number)}
+        </span>
     : null
     );
 }
@@ -32,7 +32,7 @@ const ItemDetail = ({item = {img: '', name: 'Error', price: 0, desc:'Producto no
                         <p>{FormatNumber(item.price)}</p>
                     </div>
                     <div className="item-detail-desc">
-                        <p>{item.desc}</p>
+                        <p>{item.info}</p>
                     </div>
                 </div>
             </div>

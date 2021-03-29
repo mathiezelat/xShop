@@ -1,11 +1,21 @@
 .item-list{
     display: flex;
     flex-direction: row;
-    margin: 5px;
+    margin: 5px auto;
     padding: 5px;
     width: 95%;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+}
+.item-list-cards{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+    justify-items: flex-end;
+    flex-wrap: wrap;
 }
 @media screen and (max-width:768px){
     .item-list{
