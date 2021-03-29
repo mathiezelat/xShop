@@ -209,13 +209,14 @@ nav{
         justify-content: space-between;
         padding-left: 50px;
         padding-right: 50px;
+        z-index: 10;
     }
     .nav-links{
         display: flex;
         visibility: hidden;
         position: absolute;
         right: 0px;
-        height: 92vh;
+        height: 130vh;
         top: 8vh;
         background-color: $background-menu;
         flex-direction: column;
@@ -234,7 +235,11 @@ nav{
             opacity: 0;
             margin-top: 8vh;
             display: none;
+            &:first-child{
+                margin-top: 13vh;
+            }
         }
+
         a{
             font-size: 15px;
         }
@@ -297,6 +302,7 @@ nav{
         }
         li:first-child{
             padding-top: 10px;
+            margin-top: 5px;
         }
         li:nth-last-child(1){
             border-bottom: 0px solid #1d2631;

@@ -5,6 +5,7 @@ import ItemDetailContainer from './components/ItemDetailContainer'
 import ItemCount from './components/ItemCount'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Error404 from './components/Error404';
+import Footer from './components/Footer';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           <Error404/>
         </Route>
       </Switch>
+      <Footer/>
       {/* <ItemCount initial="1" stock="5" onAdd={(num)=>console.log(`Se agrego ${num} producto/s`)}/> */}
 
       </div>
