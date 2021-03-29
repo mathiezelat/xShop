@@ -100,7 +100,11 @@ const data = [
 const getItems = (category)=>{
     return new Promise((resolve, reject)=>{
         setTimeout(() => {
+            if(category){
             resolve(data.filter(i => i.category === category));
+            } else{
+            resolve(data)
+            }
             reject('Ocurrio un error inesperado')
         }, 500);
     })
@@ -112,25 +116,12 @@ const ItemListContainer = ({name})=> {
     const {categoryId} = useParams();
     useEffect( () => {
         setLoading(true)
-        if (categoryId) {
             getItems(categoryId)
             .then((respuesta)=>{
                 setItems(respuesta);
                 setLoading(false);
                 setTitle(<h2>{name} {categoryId}</h2>);
             })
-        } else {
-            new Promise((resolve,reject)=>{
-                setTimeout(() => {
-                    resolve(data);
-                    reject('Ocurrio un error inesperado');
-                }, 1000);
-            }).then((respuesta)=>{
-                setItems(respuesta);
-                setLoading(false);
-                setTitle(<h2>{name} {categoryId}</h2>);
-            })
-        }
         return () => {
             setItems([]);
         };
