@@ -141,7 +141,6 @@ const ItemListContainer = ({name})=> {
             {items[0] ? title : null}
             <div className="item-list-container">
             {(items[0]) ?  <ItemList items={items} /> : <Error404 />  }
-            {console.log(items)}
             </div>
         </div>
     )

@@ -98,13 +98,13 @@ const data = ([
 const getItems = (id)=>{
     return new Promise((resolve)=>{
         setTimeout(() => {
-            resolve(data.filter(i => i.id === parseInt(id))[0])
+            resolve(data.filter(i => i.id === parseInt(id)))
         }, 1000);
     })
 }
 const ItemDetailContainer = ()=>{
     const [item, setItems] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const {itemId} = useParams()
     useEffect(() => {
         setLoading(true);
@@ -113,13 +113,15 @@ const ItemDetailContainer = ()=>{
             setLoading(false);
         }
         );
-        return;
+        return ()=>{
+            setItems([])
+        };
     }, [itemId])
     if (loading) return <Loading/>
     return(
         <div>
             {console.log(item)}
-            {(item===undefined) ? <Error404/> : <ItemDetail item={item}/> }
+            {(item[0]) ? <ItemDetail item={item[0]}/> : <Error404/> }
         </div>
     )
 }
