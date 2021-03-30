@@ -19,11 +19,11 @@ const App = () => {
           <ItemListContainer name="Productos Destacados"/>
         </Route>
 
-        <Route path='/category/:categoryId'>
+        <Route exact path='/category/:categoryId'>
           <ItemListContainer name="Categoria"/>
         </Route>
 
-        <Route path='/item/:itemId'>
+        <Route exact path='/item/:itemId'>
           <ItemDetailContainer />
         </Route>
 

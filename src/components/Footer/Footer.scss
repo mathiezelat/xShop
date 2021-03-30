@@ -13,6 +13,15 @@ footer{
     justify-content: center;
     align-items: center;
     background-color: $background-submenu;
+    h5{
+        font-family: $font-menu;
+        font-weight: 500;
+        font-size: 18px;
+    }
+    h6{
+        font-family: $font-menu;
+        font-weight: 300;
+    }
 }
 
 .footer-container{
@@ -25,6 +34,7 @@ footer{
     justify-content: space-between;
     align-content: center;
     font-family: $font-menu;
+
     div{
         display: flex;
         flex-direction: column;
