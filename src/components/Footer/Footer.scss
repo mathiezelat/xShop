@@ -6,9 +6,10 @@ footer{
     display:flex;
     flex-direction: column;
     margin: auto;
-    position: absolute;
+    margin-top: 65vh;
+    position: relative;
     z-index: -2;
-    bottom: -30vh;
+    bottom: 0;
     color: #ccc;
     justify-content: center;
     align-items: center;
@@ -71,10 +72,7 @@ footer{
 }
 
 @media screen and (max-width:768px){
-    footer{
-        bottom: -12vh;
-        margin-top: 0vh;
-    }
+
     .footer-container{
         justify-content: space-between;
         width: 90%;

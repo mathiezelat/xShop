@@ -2,6 +2,13 @@
     background: rgb(91, 78, 177);
     color: rgb(231, 231, 231);
 }
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 html{
     min-height: 100vh;
     position: relative;
@@ -9,12 +16,5 @@ html{
 body{
     background-color: #eeeff7;
     min-height: 100vh;
-    margin-bottom: 10vh;
     overflow-x: hidden;
-}
-@media screen and (max-width:768px){
-    body{
-        min-height: 200vh;
-        margin-bottom: 45px;
-    }
 }
