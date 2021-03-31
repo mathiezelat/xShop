@@ -1,5 +1,8 @@
+import { Link } from 'react-router-dom';
 import './Footer.scss';
-
+const onClickUp = () => {
+    window.scrollTo(0,0)
+}
 const Footer = () =>{
     return(
         <footer>
@@ -10,18 +13,18 @@ const Footer = () =>{
                     <h4>Navegación</h4>
                     <div>
                         <ul>
-                            <li>Home</li>
+                            <li><Link to='/' onClick={onClickUp}>Home</Link></li>
                             <li>Categorias
                                 <ul>
-                                    <li>iMac</li>
-                                    <li>Macbook</li>
-                                    <li>iPhone</li>
-                                    <li>Watch</li>
+                                    <li><Link to='/category/iMac' onClick={onClickUp}>iMac</Link></li>
+                                    <li><Link to='/category/MacBook' onClick={onClickUp}>MacBook</Link></li>
+                                    <li><Link to='/category/iPhone' onClick={onClickUp}>iPhone</Link></li>
+                                    <li><Link to='/category/Watch' onClick={onClickUp}>Watch</Link></li>
                                 </ul>
                             </li>
-                            <li>Nosotros</li>
-                            <li>Ayuda</li>
-                            <li>Carrito</li>
+                            <li><Link to='/nosotros' onClick={onClickUp}>Nosotros</Link></li>
+                            <li><Link to='/ayuda' onClick={onClickUp}>Ayuda</Link></li>
+                            <li><Link to='/cart' onClick={onClickUp}>Carrito</Link></li>
                         </ul>
                     </div>
                     </div>
