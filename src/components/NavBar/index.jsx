@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './NavBar.scss';
 import CartWidget from '../CartWidget/index';
 import {animateScroll as scroll} from 'react-scroll'
@@ -19,9 +19,7 @@ const NavBar = () =>{
         setActiveDropdown(!activeDropdown)
         onClickUp()
     }
-    useEffect(() => {;
-        return;
-    }, [activeDropdown])
+
     return (
         <header>
             <nav>
