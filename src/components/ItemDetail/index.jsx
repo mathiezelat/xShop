@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import './ItemDetail.scss';
+import ItemCount from '../ItemCount';
+import { Link } from "react-router-dom";
 
 
 
@@ -16,6 +18,12 @@ const FormatNumber = (number) => {
     );
 }
 const ItemDetail = ({item = {img: '', name: 'Error', price: 0, desc:'Producto no encontrado'}})=>{
+    const [count, setCount] = useState(0)
+    const addHandler = (e)=>{
+        console.log(`Se agrego ${e} producto/s `)
+        setCount(e)
+    }
+
     return(
         <div className="item-detail">
             <div className="item-detail-image-contain">
@@ -34,6 +42,9 @@ const ItemDetail = ({item = {img: '', name: 'Error', price: 0, desc:'Producto no
                     <div className="item-detail-desc">
                         <p>{item.info}</p>
                     </div>
+                </div>
+                <div className="item-count-add">
+                    {count === 0 ? <ItemCount stock="5" initial="1" onAdd={addHandler} /> : <Link to='/cart'><button className="btn-end-buy">Terminar compra</button></Link>}            
                 </div>
             </div>
         </div>

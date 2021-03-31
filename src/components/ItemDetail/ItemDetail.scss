@@ -2,6 +2,8 @@
 
 $font-primario: 'Poppins', sans-serif;
 $color-linea: rgba($color: #000000, $alpha: 0.1);
+$color-btn: #3483fa;
+$color-btn-hover: #2968c8;
 
 /////////////////////////////////////////////////////////
 .item-detail{
@@ -27,7 +29,7 @@ $color-linea: rgba($color: #000000, $alpha: 0.1);
     -o-border-radius: 5px;
 }
 .item-detail-image-contain{
-    flex-basis: 50%;
+    flex-basis: 65%;
     flex-shrink: 2;
     flex-grow: 2;
 }
@@ -92,6 +94,36 @@ $color-linea: rgba($color: #000000, $alpha: 0.1);
     p{
         font-weight: 400;
         font-size: 20px;
+    }
+}
+.item-count-add{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.btn-end-buy{
+    background-color: $color-btn;
+    color: whitesmoke;
+    border: none;
+    font-family: $font-primario;
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 10px 55px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    transition: background .2s;
+    -webkit-transition: background .2s;
+    -moz-transition: background .2s;
+    -ms-transition: background .2s;
+    -o-transition: background .2s;
+    &:hover{
+        background-color: $color-btn-hover;
     }
 }
 @media screen and (max-width:768px){

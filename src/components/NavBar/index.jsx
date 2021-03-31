@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './NavBar.scss';
 import navSlide from './navSlideApp.js';
 import subNavEnter from './subNavEnter.js';
@@ -7,6 +7,10 @@ import CartWidget from '../CartWidget/index';
 import {NavLink} from 'react-router-dom';
 
 const NavBar = () =>{
+    useEffect(() => {
+        
+        return;
+    }, [])
     return (
         <header>
             <nav>
