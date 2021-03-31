@@ -44,7 +44,7 @@ const ItemDetail = ({item = {img: '', name: 'Error', price: 0, desc:'Producto no
                     </div>
                 </div>
                 <div className="item-count-add">
-                    {count === 0 ? <ItemCount stock="5" initial="1" onAdd={addHandler} /> : <Link to='/cart'><button className="btn-end-buy">Terminar compra</button></Link>}            
+                    {count === 0 ? <ItemCount stock={item.stock} initial="1" onAdd={addHandler} /> : <Link to='/cart'><button className="btn-end-buy">Terminar compra</button></Link>}            
                 </div>
             </div>
         </div>
