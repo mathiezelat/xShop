@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './Item.scss'
+const onClickUp = () => {
+    window.scrollTo(0,0)
+}
+
 
 
 const FormatNumber = (number) => {
@@ -18,7 +22,7 @@ const FormatNumber = (number) => {
 
 const Item = ({item})=> {
     return (
-        <Link to={`/item/${item.id}`} className="link-styles">
+        <Link to={`/item/${item.id}`} className="link-styles" onClick={onClickUp}>
             <div className="item">
                 <div className="item-contain">
                     <div className="item-image-contain">

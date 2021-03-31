@@ -211,6 +211,19 @@ nav{
             }
         }
     }
+    .dropdown-off{
+        position: absolute;
+        visibility: hidden;
+        display: none;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        margin-top: 5rem;
+        height: 100vh;
+        background-color: black;
+        opacity: 0;
+        z-index: -1;
+    }
     nav{
         position: relative;
         justify-content: space-between;

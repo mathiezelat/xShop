@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import './NavBar.scss';
 import CartWidget from '../CartWidget/index';
-import {animateScroll as scroll} from 'react-scroll'
 import {NavLink} from 'react-router-dom';
 
 const onClickUp = () => {
-    scroll.scrollToTop()
+    window.scrollTo(0,0)
 }
-
 
 const NavBar = () =>{
     const [activeDropdown, setActiveDropdown] = useState(false);
