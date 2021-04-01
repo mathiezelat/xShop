@@ -29,7 +29,7 @@ const ItemListContainer = ({name})=> {
         <div className="container-items-list">
             {items[0] ? title : null}
             <div className="item-list-container">
-            {(items[0]) ?  <ItemList items={items} /> : <Error404 />  }
+            {items[0] ?  <ItemList items={items} /> : <Error404 />  }
             </div>
         </div>
     )
