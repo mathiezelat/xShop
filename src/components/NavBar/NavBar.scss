@@ -230,7 +230,7 @@ nav{
         padding-left: 50px;
         padding-right: 50px;
         height: auto;
-        z-index: 20;
+        z-index: 30;
     }
     .nav-links{
         display: flex;
@@ -251,13 +251,16 @@ nav{
         -moz-transition: width 0.2s ease, visibility 0.5s ease-in;
         -ms-transition: width 0.2s ease, visibility 0.5s ease-in;
         -o-transition: width 0.2s ease, visibility 0.5s ease-in;
-        z-index: 10;
+        z-index: -1;
         li{
             opacity: 0; 
             margin-top: 10vh;
             display: none;
             &:first-child{
                 margin-top: 13vh;
+            }
+            &:nth-last-child(1){
+                margin-bottom: 12vh;
             }
 }
 
@@ -273,7 +276,7 @@ nav{
         visibility: visible;
     }
     .nav-active-mov{
-        width: 70%;
+        width: 80%;
         li{
             display: inherit;
             animation: navLinkFade 0.4s ease forwards 0.2s ;
@@ -328,6 +331,7 @@ nav{
         }
         li:nth-last-child(1){
             border-bottom: 0px solid #1d2631;
+            margin-bottom: 10px;
         }
         &:after{
             content: '';
