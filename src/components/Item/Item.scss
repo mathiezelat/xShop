@@ -115,21 +115,21 @@ $font-primario: 'Poppins', sans-serif;
         user-select: none;
 }
 }
-@media screen and (max-width:768px){
+@media screen and (max-width:768px) and (min-width:400px) {
     .item{
-        width: 155px;
+        width: 190px;
         height: 280px;
-        margin: 1px;
+        margin: 3px;
     }
     .item-content{
         overflow: hidden;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        width: 155px;
+        width: 190px;
     }
     .name-item{
-        width: 155px;
+        width: 190px;
         overflow: hidden;
         margin-left: 5px;
         display: flex;
@@ -137,13 +137,14 @@ $font-primario: 'Poppins', sans-serif;
         justify-content: flex-start;
         h3{
             max-width:90%;
+            font-size: 17px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
     }
     .price-item{
-        width: 155px;
+        width: 190px;
         overflow: hidden;
         display: flex;
         flex-wrap: nowrap;
@@ -156,7 +157,90 @@ $font-primario: 'Poppins', sans-serif;
     }
     
     .desc-item{
-        width: 155px;
+        width: 190px;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        p{
+            max-width:90%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    .item-image-contain{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 180px;
+        border-bottom: 0.11px solid rgba(124, 124, 124, 0.205);
+        margin-bottom: 10px;
+        background-color: #ffffff;
+        border-radius: 5px 5px 0px 0px;
+        -webkit-border-radius: 5px 5px 0px 0px;
+        -moz-border-radius: 5px 5px 0px 0px;
+        -ms-border-radius: 5px 5px 0px 0px;
+        -o-border-radius: 5px 5px 0px 0px;
+        overflow: hidden;
+    }
+    .img-item{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    img{
+        width: 100%;
+        height: 100px;
+        object-fit: contain;
+        pointer-events: none;
+        user-select: none;
+}}
+}
+
+@media screen and (max-width:400px){
+    .item{
+        width: 150px;
+        height: 280px;
+        margin: 3px;
+    }
+    .item-content{
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 150px;
+    }
+    .name-item{
+        width: 150px;
+        overflow: hidden;
+        margin-left: 5px;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        h3{
+            max-width:90%;
+            font-size: 17px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    .price-item{
+        width: 150px;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        p{
+            font-size: 15px;
+            font-weight: 500;
+            color: rgb(8, 151, 8);
+        }
+    }
+    
+    .desc-item{
+        width: 190px;
         overflow: hidden;
         display: flex;
         flex-wrap: nowrap;
