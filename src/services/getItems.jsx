@@ -5,10 +5,11 @@ const getItems = (category)=>{
         setTimeout(() => {
             if(category){
             resolve(data.filter(i => i.category === category));
-            } else{
+            } else if(!category) {
             resolve(data)
-            }
+            } else {
             reject('Ocurrio un error inesperado')
+            }
         }, 500);
     })
 }

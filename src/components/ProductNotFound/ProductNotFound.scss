@@ -1,0 +1,15 @@
+///////////////////VAR////////////////////////////////////
+
+$font-primario: 'Poppins', sans-serif;
+
+/////////////////////////////////////////////////////////
+.product-not-found-container{
+    font-family: $font-primario;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    width: 100%;
+    height: 71vh;
+    justify-content: flex-start;
+    align-items: center;
+}

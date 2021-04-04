@@ -1,9 +1,14 @@
 import data from "./data";
 
 const getItemsDetail = (id)=>{
-    return new Promise((resolve)=>{
+    return new Promise((resolve, reject)=>{
         setTimeout(() => {
-            resolve(data.filter(i => i.id === parseInt(id)))
+            let product = data.find(product => parseInt(product.id) === parseInt(id))
+            if(product){
+                resolve(product)
+            } else {
+                reject('El producto no existe');
+            }
         }, 1000);
     })
 }
