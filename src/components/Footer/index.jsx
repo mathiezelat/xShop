@@ -41,7 +41,7 @@ const Footer = () =>{
                 </div>
             </div>
             <h5>Mathias Ezequiel Latronico</h5>
-            <h6>Hecho con &#128150; </h6>
+            <h6>Hecho con ❤️ </h6>
         </footer>
     )
 }
