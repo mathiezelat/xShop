@@ -5,11 +5,14 @@ import ItemDetailContainer from './components/ItemDetailContainer'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Error404 from './components/Error404';
 import Footer from './components/Footer';
+import {CartProviderContext} from './context/CartContext';
 
 const App = () => {
   return (
+
+  <CartProviderContext>
+
     <BrowserRouter>
-    
     <div className="App">
       <div className="App-fondo">
       <NavBar />
@@ -31,11 +34,11 @@ const App = () => {
         </Route>
       </Switch>
       <Footer/>
-
       </div>
     </div>
-
     </BrowserRouter>
+
+    </CartProviderContext>
   );
 }
 

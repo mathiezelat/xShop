@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import './ItemDetail.scss';
 import ItemCount from '../ItemCount';
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 
 
@@ -19,11 +20,12 @@ const FormatNumber = (number) => {
 }
 const ItemDetail = ({item = {img: '', name: 'Error', price: 0, desc:'Producto no encontrado'}})=>{
     const [count, setCount] = useState(0)
-    const addHandler = (e)=>{
-        console.log(`Se agrego ${e} producto/s `)
-        setCount(e)
+    const {addItem} = useContext(CartContext);
+    const addHandler = (quantity)=>{
+        setCount(quantity)
+        console.log(`Se agrego ${quantity} producto/s `)
+        addItem(item,quantity)
     }
-
     return(
         <div className="item-detail">
             <div className="item-detail-image-contain">
@@ -44,7 +46,7 @@ const ItemDetail = ({item = {img: '', name: 'Error', price: 0, desc:'Producto no
                     </div>
                 </div>
                 <div className="item-count-add">
-                    {count === 0 ? <ItemCount stock={item.stock} initial="1" onAdd={addHandler} /> : <Link to='/cart'><button className="btn-end-buy">Terminar compra</button></Link>}            
+                    {count === 0 ? <ItemCount stock={item.stock} initial="1" onAdd={addHandler} /> : <Link to='/cart'><button className="btn-end-buy" >Terminar compra</button></Link>}            
                 </div>
             </div>
         </div>

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import './NavBar.scss';
 import CartWidget from '../CartWidget/index';
 import {NavLink} from 'react-router-dom';
-
 const onClickUp = () => {
     window.scrollTo(0,0)
 }

@@ -10,7 +10,7 @@ const onClickUp = () => {
 const FormatNumber = (number) => {
     return (
 (number) ? 
-    <span style={{ color: "green" }}>
+    <span style={{ color: "#333" }}>
         {new Intl.NumberFormat("ES-AR", {
         style: "currency",
         currency: "ARS"
