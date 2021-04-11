@@ -1,0 +1,87 @@
+///////////////////VAR////////////////////////////////////
+
+$font-primario: 'Poppins', sans-serif;
+
+/////////////////////////////////////////////////////////
+.container-cart{
+    font-family: $font-primario;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1{
+        font-weight: 500;
+    }
+}
+.container-cart-items{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cart-contain-info-items{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 900px;
+    height: 60px;
+    background-color: white;
+    border: 1px solid rgba(100, 100, 100, 0.295);
+    box-shadow: 0px 5px 13px 0px rgb(0 0 0 / 15%);
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.btn-clear-cart{
+    button{
+        font-family: $font-primario;
+        cursor: pointer;
+        background-color: red;
+        color: white;
+        padding: 5px 15px;
+        border: none;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+}
+}
+.container-cart-empty{
+    font-family: $font-primario;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 30vh;
+    h1{
+        font-weight: 400;
+    }
+}
+@media screen and (max-width:1200px) and (min-width:768px){
+    .cart-contain-info-items{
+        width: 720px;
+    }
+}
+@media screen and (max-width:768px){
+    .container-cart{
+        display: flex;
+        flex-direction: column;
+    }
+    .container-cart-items{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .cart-contain-info-items{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 350px;
+        height: 125px;
+    }
+}
+

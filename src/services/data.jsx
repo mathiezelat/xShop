@@ -60,7 +60,7 @@ const data = [
         img: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-mini-blue-select-2020?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1604343706000",
         category: "iPhone",
         vendidos: 200,
-        stock: 15,
+        stock: 0,
         destacado: false,
         envio: false
     },

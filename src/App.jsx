@@ -6,13 +6,14 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Error404 from './components/Error404';
 import Footer from './components/Footer';
 import {CartProviderContext} from './context/CartContext';
+import Cart from './components/Cart';
 
 const App = () => {
   return (
 
-  <CartProviderContext>
-
+    
     <BrowserRouter>
+    <CartProviderContext>
     <div className="App">
       <div className="App-fondo">
       <NavBar />
@@ -21,12 +22,16 @@ const App = () => {
           <ItemListContainer name="Productos Destacados"/>
         </Route>
 
-        <Route exact path='/category/:categoryId'>
+        <Route path='/category/:categoryId'>
           <ItemListContainer name="Categoria"/>
         </Route>
 
-        <Route exact path='/item/:itemId'>
+        <Route path='/item/:itemId'>
           <ItemDetailContainer />
+        </Route>
+        
+        <Route path='/cart'>
+          <Cart/>
         </Route>
 
         <Route path='*'>
@@ -36,9 +41,9 @@ const App = () => {
       <Footer/>
       </div>
     </div>
+    </CartProviderContext>
     </BrowserRouter>
 
-    </CartProviderContext>
   );
 }
 

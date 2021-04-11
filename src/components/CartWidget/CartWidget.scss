@@ -18,3 +18,22 @@
     user-select: none;
     pointer-events: none;
 }
+.cantidad-de-productos-icon-shop{
+    display: flex;
+    font-size: 14px;
+    padding-left: 2px;
+    padding-top: 0.5px;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: red;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}

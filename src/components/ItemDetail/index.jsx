@@ -1,10 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import './ItemDetail.scss';
 import ItemCount from '../ItemCount';
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
-
+const onClickUp = () => {
+    window.scrollTo(0,0)
+}
 
 const FormatNumber = (number) => {
     return (
@@ -20,12 +22,24 @@ const FormatNumber = (number) => {
 }
 const ItemDetail = ({item = {img: '', name: 'Error', price: 0, desc:'Producto no encontrado'}})=>{
     const [count, setCount] = useState(0)
-    const {addItem} = useContext(CartContext);
+    const {cart, addItem} = useContext(CartContext);
     const addHandler = (quantity)=>{
         setCount(quantity)
         console.log(`Se agrego ${quantity} producto/s `)
         addItem(item,quantity)
     }
+    const cartCount = (quantity)=>{
+        let indexItem = cart.findIndex(cartItem => cartItem.item.id === item.id);
+        if (indexItem !== -1){
+            quantity = cart[indexItem].quantity
+        }
+        return quantity
+    }
+    useEffect(()=>{
+        return(()=>{
+            onClickUp()
+        })
+    }, [])
     return(
         <div className="item-detail">
             <div className="item-detail-image-contain">
@@ -46,7 +60,30 @@ const ItemDetail = ({item = {img: '', name: 'Error', price: 0, desc:'Producto no
                     </div>
                 </div>
                 <div className="item-count-add">
-                    {count === 0 ? <ItemCount stock={item.stock} initial="1" onAdd={addHandler} /> : <Link to='/cart'><button className="btn-end-buy" >Terminar compra</button></Link>}            
+                    {(item.stock - cartCount(count) !== 0) ? (count === 0 ? (<>
+                    <ItemCount stock={item.stock - cartCount(count)} initial={cartCount(count) ? cartCount(count) - cartCount(count) + 1: 1} onAdd={addHandler} />
+                    {(cartCount(count)) ? (
+                    <div className="item-cart-count-full">
+                    <h4>Tenes {cartCount(count)} productos en el carrito</h4>
+                    <Link to='/cart'><button className="btn-end-buy" >Terminar compra</button></Link>
+                    </div>
+                    ) : null}
+                    </>) : 
+                    (
+                        <div className="item-cart-count-full">
+                        <h4>Tenes {cartCount(count)} productos en el carrito</h4>
+                        <Link to='/cart'><button className="btn-end-buy" >Terminar compra</button></Link>
+                        </div>
+                    )) :
+                    ((cartCount(count) !== 0) ? 
+                    (<div className="item-cart-count-full">
+                    <h4>Tenes {cartCount(count)} productos en el carrito</h4>
+                    <Link to='/cart'><button className="btn-end-buy" >Terminar compra</button></Link>
+                    </div>) : 
+                    (<div className="item-cart-count-full">
+                    <h2>Sin Stock</h2>
+                    </div>
+                    ))}        
                 </div>
             </div>
         </div>

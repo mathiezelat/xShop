@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './Item.scss'
+
 const onClickUp = () => {
     window.scrollTo(0,0)
 }
-
-
 
 const FormatNumber = (number) => {
     return (
