@@ -1,16 +1,10 @@
-import data from "./data";
+import {getFirestore} from '../firebase'
 
 const getItemsDetail = (id)=>{
-    return new Promise((resolve, reject)=>{
-        setTimeout(() => {
-            let product = data.find(product => parseInt(product.id) === parseInt(id))
-            if(product){
-                resolve(product)
-            } else {
-                reject('El producto no existe');
-            }
-        }, 1000);
-    })
+    const db = getFirestore();
+    const itemsCollection = db.collection('items');
+    const item = itemsCollection.doc(id);
+    return item.get();
 }
 
 export default getItemsDetail;

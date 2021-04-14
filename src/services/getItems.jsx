@@ -1,16 +1,11 @@
-import data from "./data";
+import {getFirestore} from '../firebase'
 
 const getItems = (category)=>{
-    return new Promise((resolve, reject)=>{
-        setTimeout(() => {
-            if(category){
-            resolve(data.filter(i => i.category === category));
-            } else if(!category) {
-            resolve(data)
-            } else {
-            reject('Ocurrio un error inesperado')
-            }
-        }, 500);
-    })
+    const db = getFirestore();
+    const itemsCollection = db.collection('items');
+    const filter = category ? itemsCollection.where('category', '==', category).limit(20) : itemsCollection.limit(20);
+    const promise = filter.get();
+    return promise;
 }
+
 export default getItems;

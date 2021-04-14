@@ -41,6 +41,7 @@ const NavBar = () =>{
                     <ul className={`sub-nav-links ${activeDropdown ? 'active-subnav' : ''}`}>
                         <li><NavLink to={`/category/iMac`} onClick={DropSlide}>iMac</NavLink></li>
                         <li><NavLink to={`/category/MacBook`} onClick={DropSlide}>MacBook</NavLink></li>
+                        <li><NavLink to={`/category/iPad`} onClick={DropSlide}>iPad</NavLink></li>
                         <li><NavLink to={`/category/iPhone`} onClick={DropSlide}>iPhone</NavLink></li>
                         <li><NavLink to={`/category/Watch`} onClick={DropSlide}>Watch</NavLink></li>
                     </ul>

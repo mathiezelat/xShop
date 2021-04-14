@@ -20,12 +20,11 @@ const FormatNumber = (number) => {
     : null
     );
 }
-const ItemDetail = ({item = {img: '', name: 'Error', price: 0, desc:'Producto no encontrado'}})=>{
+const ItemDetail = ({item = null})=>{
     const [count, setCount] = useState(0)
     const {cart, addItem} = useContext(CartContext);
     const addHandler = (quantity)=>{
         setCount(quantity)
-        console.log(`Se agrego ${quantity} producto/s `)
         addItem(item,quantity)
     }
     const cartCount = (quantity)=>{

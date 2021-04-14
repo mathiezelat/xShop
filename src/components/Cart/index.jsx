@@ -25,12 +25,10 @@ const Cart = ()=>{
     const [loading, setLoading] = useState(true)
     const {cart,clear, CartLength, CartPrice} = useContext(CartContext);
     useEffect(()=>{
-        setTimeout(()=>{
-            setLoading(false)
-        },1000)
+        setLoading(false)
         return(()=>{
-            setLoading(true)
             onClickUp()
+            setLoading(true)
         })
     },[])
     if(loading) return <Loading />

@@ -11,14 +11,19 @@ const ItemListContainer = ({name})=> {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [title, setTitle] = useState(null);
-    const {categoryId} = useParams();
+    const {categoryId = null} = useParams();
     useEffect( () => {
         setLoading(true)
-            getItems(categoryId)
-            .then((respuesta)=>{
-                setItems(respuesta);
+        const promise = getItems(categoryId);
+            promise.then((snaptshot)=>{
+                if(snaptshot.size > 0){
+                    setItems(snaptshot.docs.map(doc => {
+                        return {id:doc.id, ...doc.data()}
+                    }));
+                    setTitle(<h2>{name} {categoryId}</h2>);
+                }
+            }).finally(()=>{
                 setLoading(false);
-                setTitle(<h2>{name} {categoryId}</h2>);
             })
         return () => {
             setItems([]);

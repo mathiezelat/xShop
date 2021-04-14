@@ -39,7 +39,6 @@ export const CartProviderContext = ({children}) =>{
     const isInCart = (id) =>{
         return cart.findIndex(e=> e.item.id === id)
     }
-    
     return(
         <CartContext.Provider value={ {cart,addItem,removeItem,clear,isInCart,CartLength, CartPrice} } >
             {children}

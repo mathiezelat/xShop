@@ -7,7 +7,7 @@ import getItemsDetail from "../../services/getItemsDetail";
 
 
 const ItemDetailContainer = ()=>{
-    const [item, setItems] = useState(false);
+    const [item, setItem] = useState(false);
     const [loading, setLoading] = useState(true);
     const [productNotFound, setProductNotFound] = useState(false)
 
@@ -15,15 +15,19 @@ const ItemDetailContainer = ()=>{
     useEffect(() => {
         setLoading(true);
         getItemsDetail(itemId).then((respuesta)=>{
-            setItems(respuesta)
-            setLoading(false);
+            if (respuesta.exists){
+                setItem(() => {
+                    return {id:respuesta.id, ...respuesta.data()}
+                });
+            }
         }
         ).catch(error => {
-            setLoading(false);
             setProductNotFound(error);
+        }).finally(()=>{
+            setLoading(false);
         });
         return ()=>{
-            setItems([])
+            setItem([])
         };
     }, [itemId])
     if (loading) return <Loading/>
