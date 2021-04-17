@@ -27,6 +27,8 @@ const FormatNumber = (number) => {
 const Cart = ()=>{
     const [loading, setLoading] = useState(true)
     const [finishBuy, setFinishBuy] = useState(false)
+    const [paid, setPaid] = useState(false)
+    const [order, setOrder] = useState(null)
     const [nombre, setNombre] = useState(null)
     const [apellido, setApellido] = useState(null)
     const [telefono, setTelefono] = useState(null)
@@ -41,6 +43,7 @@ const Cart = ()=>{
         })
     },[])
     const generateOrder = ()=>{
+        setLoading(true)
         const db = getFirestore();
         const orders = db.collection("orders")
         let orden = {}
@@ -54,7 +57,10 @@ const Cart = ()=>{
             const quantity = cartItem.quantity;
             return {id,name,price,quantity}
         })
-        orders.add(orden).then(({id})=>{console.log(`Ticket de orden generada: ${id}`)}).catch( err => {console.log(err)}).finally(()=>{console.log('Orden enviada')})
+        orders.add(orden)
+        .then(({id})=>{setOrder(id)})
+        .catch( err => {console.log(err)})
+        .finally(()=>{clear();setPaid(true); setLoading(false)})
         const itemsToUpdate = db.collection('items').where(
             firebase.firestore.FieldPath.documentId(), 'in', cart.map(i => i.item.id)
         )
@@ -69,9 +75,45 @@ const Cart = ()=>{
         })
     }
     if(loading) return <Loading />
+    if(finishBuy) return (
+        (!paid) ? (
+        <div className="container-cart">
+        <div className="cart-finish-buy">
+        <h1>Finalizar compra</h1>
+            <div className="form-buy-container">
+                <form id="form-finish-buy" onSubmit={e=>{e.preventDefault();generateOrder();}}>
+                    <p>Nombre:</p>
+                    <input type="text" id="nombre" minLength="3" maxLength="15" required onChange={(nombre)=>setNombre(nombre.target.value)}/>
+                    <p>Apellido:</p>
+                    <input type="text" id="apellido" minLength="3" maxLength="15" required onChange={(apellido)=>setApellido(apellido.target.value)}/>
+                    <p>Número de teléfono:</p>
+                    <input type="number" id="numero" min="0" max="9999999999" required onChange={(telefono)=>setTelefono(telefono.target.value)}/>
+                    <p>Mail de contacto:</p>
+                    <input type="email" id="email" required onChange={(mail)=>setMail(mail.target.value)}/>
+                </form>
+            </div>
+            <div className="finish-buy-end">
+                <button type="submit" form="form-finish-buy" className="btn-finish-buy">Finalizar compra</button>
+            </div>
+        </div>
+    </div>) : (
+        <div className="container-cart">
+            <div className="cart-finish-buy">
+                <div className="cart-finish-paid">
+                    <h1>¡Compra Realizada!</h1>
+                    <div className="cart-finish-order">
+                    <h2>Número de orden generada</h2>
+                    <h3>{order}</h3>
+                    <p>Guarda tu número de orden</p>
+                    </div>
+                    <Link to='/' className="btn-volver-inicio">Volver a Inicio</Link>
+                </div>
+            </div>
+        </div>
+    )
+    )
     return(
         (cartLength !== 0) ? (
-            (!finishBuy) ? (
             <div className="container-cart">
             <h1>Carrito de compras</h1>
             <div className="container-cart-items">
@@ -89,32 +131,11 @@ const Cart = ()=>{
                 <div className="cart-buy-items">
                     <button onClick={()=> setFinishBuy(!finishBuy)}>Comprar</button>
                 </div>
-        </div>) : (
-        <div className="container-cart">
-            <div className="cart-finish-buy">
-            <h1>Finalizar compra</h1>
-                <div className="form-buy-container">
-                    <form id="form-finish-buy" onSubmit={e=>{e.preventDefault();generateOrder();}}>
-                        <p>Nombre:</p>
-                        <input type="text" id="nombre" minLength="3" maxLength="15" required onChange={(nombre)=>setNombre(nombre.target.value)}/>
-                        <p>Apellido:</p>
-                        <input type="text" id="apellido" minLength="3" maxLength="15" required onChange={(apellido)=>setApellido(apellido.target.value)}/>
-                        <p>Número:</p>
-                        <input type="number" id="numero" min="0" max="9999999999" required onChange={(telefono)=>setTelefono(telefono.target.value)}/>
-                        <p>Mail de contacto:</p>
-                        <input type="email" id="email" required onChange={(mail)=>setMail(mail.target.value)}/>
-                    </form>
-                </div>
-                <div className="finish-buy-end">
-                    <button type="submit" form="form-finish-buy" className="btn-finish-buy">Finalizar compra</button>
-                </div>
-            </div>
-        </div>
-        ) ) 
+        </div>)
         : (
             <div className="container-cart-empty">
                 <h1>Tu carrito está vacío</h1>
-                <Link to='/'>Volver a Inicio</Link>
+                <Link to='/' className="btn-volver-inicio">Volver a Inicio</Link>
             </div>
         )
     )
