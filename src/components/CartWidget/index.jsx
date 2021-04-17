@@ -6,12 +6,12 @@ import {CartContext} from '../../context/CartContext'
 
 
 const CartWidget = ()=>{
-    const {CartLength} = useContext(CartContext)
+    const {cartLength} = useContext(CartContext)
     return(
         <li>
             <Link to='/cart' className="icon-shop-fondo">
                 <img className="icon-shop" src="/images/shop-bag-icon.svg" alt="Icon Shop" />
-                {CartLength() ? <div className="cantidad-de-productos-icon-shop">{CartLength()}</div> : null }
+                {cartLength ? <div className="cantidad-de-productos-icon-shop">{cartLength}</div> : null }
             </Link>
         </li>
     )

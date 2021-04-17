@@ -11,7 +11,6 @@ import Cart from './components/Cart';
 const App = () => {
   return (
 
-    
     <BrowserRouter>
     <CartProviderContext>
     <div className="App">

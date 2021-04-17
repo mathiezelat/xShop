@@ -37,8 +37,9 @@ const CartItem = ({items})=>{
                     <div className="cart-price-contain">
                         <p>{FormatNumber(item.price * quantity)}</p>
                     </div>
+                    
                     <div className="cart-btn-remove-item-contain">
-                        <button onClick={()=>removeItem(item.id)}>Remove</button>
+                        <img src="/images/delete.svg" alt="" onClick={()=>removeItem(item.id)} />
                     </div>
                 </div>
             </div>

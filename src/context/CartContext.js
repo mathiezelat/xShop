@@ -4,18 +4,19 @@ export const CartContext = createContext({});
 
 export const CartProviderContext = ({children}) =>{
     const [cart, setCart] = useState([])
+    const [cartLength, setCartLenght] = useState(0)
+    const [cartPrice, setCartPrice] = useState(0)
     useEffect(()=>{
         if (localStorage.getItem("cart") !==null){
             setCart(JSON.parse(localStorage.getItem("cart")));
         }
+        return;
     }, [])
-    const CartLength = () =>{
-        return cart.reduce((prev, next) => {return prev + next.quantity}, 0)
-    }
-    const CartPrice = () =>{
-        return cart.reduce((prev, next) => {return prev + next.quantity * next.item.price}, 0)
-    }
-
+    useEffect(()=>{
+        setCartLenght(cart.reduce((prev, next) => {return prev + next.quantity}, 0))
+        setCartPrice(cart.reduce((prev, next) => {return prev + next.quantity * next.item.price}, 0))
+        return;
+    }, [cart])
     const addItem = (newItem, newQuantity)=>{
         if (isInCart(newItem.id) === -1){
             setCart([...cart, { item: newItem, quantity: newQuantity }])
@@ -40,9 +41,8 @@ export const CartProviderContext = ({children}) =>{
         return cart.findIndex(e=> e.item.id === id)
     }
     return(
-        <CartContext.Provider value={ {cart,addItem,removeItem,clear,isInCart,CartLength, CartPrice} } >
+        <CartContext.Provider value={ {cart,addItem,removeItem,clear,isInCart,cartLength, cartPrice} } >
             {children}
         </CartContext.Provider>
     )
-
 }

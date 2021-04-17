@@ -85,20 +85,11 @@ img{
     display: flex;
     justify-content: center;
     align-items: center;
-    button{
-        font-family: $font-primario;
-        font-weight: 500;
-        border: none;
-        padding: 5px 15px;
-        background-color: red;
-        color: white;
+    img{
         cursor: pointer;
-        border-radius: 5px;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
-}
+        width: 35px;
+        margin: 20px;
+    }
 }
 @media screen and (max-width:1200px) and (min-width:768px){
     .cart-item{
@@ -160,5 +151,16 @@ img{
     }
     .cart-price-contain{
         width: 100%;
+    }
+    .cart-btn-remove-item-contain{
+        width: 15%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img{
+            cursor: pointer;
+            width: 30px;
+            margin: 10px 10px;
+        }
     }
 }
