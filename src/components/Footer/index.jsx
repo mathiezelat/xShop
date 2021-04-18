@@ -18,6 +18,7 @@ const Footer = () =>{
                                 <ul>
                                     <li><Link to='/category/iMac' onClick={onClickUp}>iMac</Link></li>
                                     <li><Link to='/category/MacBook' onClick={onClickUp}>MacBook</Link></li>
+                                    <li><Link to='/category/iPad' onClick={onClickUp}>iPad</Link></li>
                                     <li><Link to='/category/iPhone' onClick={onClickUp}>iPhone</Link></li>
                                     <li><Link to='/category/Watch' onClick={onClickUp}>Watch</Link></li>
                                 </ul>
