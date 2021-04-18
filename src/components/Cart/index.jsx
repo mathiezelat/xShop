@@ -7,6 +7,7 @@ import {Loading} from '../Loading'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import {getFirestore} from '../../firebase'
+
 const onClickUp = () => {
     window.scrollTo(0,0)
 }
@@ -75,6 +76,7 @@ const Cart = ()=>{
         })
     }
     const CartFinishBuy = ()=>{
+        return(
         <div className="container-cart">
         <div className="cart-finish-buy">
         <h1>Finalizar compra</h1>
@@ -94,9 +96,10 @@ const Cart = ()=>{
                 <button type="submit" form="form-finish-buy" className="btn-finish-buy">Finalizar compra</button>
             </div>
         </div>
-    </div>
+    </div>)
     }
     const CartFinishPaid = ()=>{
+        return(
         <div className="container-cart">
         <div className="cart-finish-buy">
             <div className="cart-finish-paid">
@@ -109,9 +112,10 @@ const Cart = ()=>{
                 <Link to='/' className="btn-volver-inicio">Volver a Inicio</Link>
             </div>
         </div>
-    </div>
+    </div>)
     }
     const CartItemContainer = ()=>{
+        return(
         <div className="container-cart">
             <h1>Carrito de compras</h1>
             <div className="container-cart-items">
@@ -129,13 +133,14 @@ const Cart = ()=>{
                 <div className="cart-buy-items">
                     <button onClick={()=> setFinishBuy(!finishBuy)}>Comprar</button>
                 </div>
-        </div>
+        </div>)
     }
-    const CartItemContainerEmpy = ()=>{
+    const CartItemContainerEmpty = ()=>{
+        return(
         <div className="container-cart-empty">
         <h1>Tu carrito está vacío</h1>
         <Link to='/' className="btn-volver-inicio">Volver a Inicio</Link>
-    </div>
+    </div>)
     }
 
     if(loading) return <Loading />
@@ -143,7 +148,7 @@ const Cart = ()=>{
         (!paid) ? (<CartFinishBuy />) : (<CartFinishPaid/>)
     )
     return(
-        (cartLength !== 0) ? (<CartItemContainer />) : (<CartItemContainerEmpy />)
+        (cartLength !== 0) ? (<CartItemContainer />) : (<CartItemContainerEmpty />)
     )
 }
 export default Cart;
