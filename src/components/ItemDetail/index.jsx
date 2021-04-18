@@ -65,7 +65,13 @@ const ItemDetail = ({item = null})=>{
                     <div className="item-detail-desc">
                         <p>{item.info}</p>
                     </div>
-                {(item.stock > 1) ? (
+                    {(item.envio) ? (
+                        <div className="item-detail-envio">
+                            <img src="/images/envio.svg" alt=""/>
+                            <p>Envio gratis</p>
+                        </div>
+                    ):null}
+                    {(item.stock > 1) ? (
                         <div className="item-detail-stock">
                             <h2>Stock Disponible</h2>
                             <p>({item.stock} disponibles)</p>

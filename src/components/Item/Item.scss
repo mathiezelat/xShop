@@ -88,6 +88,8 @@ $font-primario: 'Poppins', sans-serif;
 }
 .item-image-contain{
     display: flex;
+    position: relative;
+    z-index: 5;
     justify-content: center;
     align-items: center;
     height: 245px;
@@ -99,7 +101,27 @@ $font-primario: 'Poppins', sans-serif;
     -moz-border-radius: 5px 5px 0px 0px;
     -ms-border-radius: 5px 5px 0px 0px;
     -o-border-radius: 5px 5px 0px 0px;
+}
+.item-envio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    white-space: normal;
+    border-collapse: collapse;
+    width: 36px;
+    height: 36px;
+    bottom: -18px;
+    right: 20px;
+    border: 1px solid rgba(51,51,51,.1);
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
     overflow: hidden;
+    img{
+        margin-left: 1px;
+        width: 21px;
+    }
 }
 .img-item{
         display: flex;
@@ -181,7 +203,6 @@ $font-primario: 'Poppins', sans-serif;
         -moz-border-radius: 5px 5px 0px 0px;
         -ms-border-radius: 5px 5px 0px 0px;
         -o-border-radius: 5px 5px 0px 0px;
-        overflow: hidden;
     }
     .img-item{
         display: flex;
@@ -264,7 +285,6 @@ $font-primario: 'Poppins', sans-serif;
         -moz-border-radius: 5px 5px 0px 0px;
         -ms-border-radius: 5px 5px 0px 0px;
         -o-border-radius: 5px 5px 0px 0px;
-        overflow: hidden;
     }
     .img-item{
         display: flex;
@@ -346,7 +366,6 @@ $font-primario: 'Poppins', sans-serif;
         -moz-border-radius: 5px 5px 0px 0px;
         -ms-border-radius: 5px 5px 0px 0px;
         -o-border-radius: 5px 5px 0px 0px;
-        overflow: hidden;
     }
     .img-item{
         display: flex;

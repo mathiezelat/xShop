@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88.076" height="70.969" viewBox="0 0 88.076 70.969">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #00a650;
+        stroke-width: 5px;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-linejoin: round;
+      }
+
+      .cls-3 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Grupo_53" data-name="Grupo 53" transform="translate(-38.048 0.165)">
+    <g id="Elipse_4" data-name="Elipse 4" class="cls-1" transform="translate(51.719 46.175)">
+      <circle class="cls-3" cx="12.315" cy="12.315" r="12.315"/>
+      <circle class="cls-4" cx="12.315" cy="12.315" r="9.815"/>
+    </g>
+    <g id="Elipse_5" data-name="Elipse 5" class="cls-1" transform="translate(89.888 46.175)">
+      <circle class="cls-3" cx="12.315" cy="12.315" r="12.315"/>
+      <circle class="cls-4" cx="12.315" cy="12.315" r="9.815"/>
+    </g>
+    <line id="Línea_8" data-name="Línea 8" class="cls-1" x2="18.215" transform="translate(74.248 58.489)"/>
+    <path id="Trazado_24" data-name="Trazado 24" class="cls-2" d="M80.025,48.916H92.169V26.358L75.577,9.766H63.548" transform="translate(31.455 9.573)"/>
+    <path id="Trazado_25" data-name="Trazado 25" class="cls-2" d="M92.463,40.408V1.806H40.548l.63,56.154H53.468" transform="translate(0 0.529)"/>
+  </g>
+</svg>

@@ -28,6 +28,8 @@ const Item = ({item})=> {
                     <div className="img-item">
                         <img src={item.img} alt=""/>
                     </div>
+                    {(item.envio) ? (<div className="item-envio"> <img src="/images/envio.svg" alt="envio"/> </div>) : null}
+
                     </div>
                     <div className="item-content">
                     <div className="name-item">

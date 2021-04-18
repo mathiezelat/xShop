@@ -120,6 +120,22 @@ $color-btn-hover: #2968c8;
         font-size: 17px;
     }
 }
+.item-detail-envio{
+    display: flex;
+    margin-top: 10px;
+    img{
+        width: 18px;
+        height: 20px;
+    }
+    p{
+        margin-left: 5px;
+        font-size: 15px;
+        margin-bottom: 2px;
+        font-weight: 300;
+        line-height: 1.5;
+        color: #00a650;
+    }
+}
 .item-detail-stock{
     margin-top: 40px;
     h2{
