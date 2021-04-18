@@ -60,7 +60,8 @@ const Cart = ()=>{
         itemsToUpdate.get().then(collection=>{
             collection.docs.forEach(docSnapshot => {
                 batch.update(docSnapshot.ref,{
-                    stock: docSnapshot.data().stock - cart.find(item => item.item.id === docSnapshot.id).quantity
+                    stock: docSnapshot.data().stock - cart.find(item => item.item.id === docSnapshot.id).quantity,
+                    vendidos: docSnapshot.data().vendidos + cart.find(item => item.item.id === docSnapshot.id).quantity
                 })
             })
             batch.commit()

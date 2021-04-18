@@ -48,15 +48,29 @@ const ItemDetail = ({item = null})=>{
             </div>
             <div className="item-detail-content-container">
                 <div className="item-detail-content">
+                    <div className="item-detail-vendidos">
+                        <p>Nuevo | {item.vendidos} vendidos</p>
+                    </div>
                     <div className="item-detail-name">
                         <h1>{item.name}</h1>
                     </div>
+                    {(item.destacado) ? (
+                        <div className="item-detail-destacado">
+                            <p>Destacado</p>
+                        </div>
+                    ) : null}
                     <div className="item-detail-price">
                         <p>{FormatNumber(item.price)}</p>
                     </div>
                     <div className="item-detail-desc">
                         <p>{item.info}</p>
                     </div>
+                {(item.stock > 1) ? (
+                        <div className="item-detail-stock">
+                            <h2>Stock Disponible</h2>
+                            <p>({item.stock} disponibles)</p>
+                        </div>
+                    ) : null}
                 </div>
                 <div className="item-count-add">
                     {(item.stock - cartCount(count) !== 0) ? (count === 0 ? (<>
