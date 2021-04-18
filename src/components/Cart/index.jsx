@@ -74,9 +74,7 @@ const Cart = ()=>{
             batch.commit()
         })
     }
-    if(loading) return <Loading />
-    if(finishBuy) return (
-        (!paid) ? (
+    const CartFinishBuy = ()=>{
         <div className="container-cart">
         <div className="cart-finish-buy">
         <h1>Finalizar compra</h1>
@@ -96,25 +94,25 @@ const Cart = ()=>{
                 <button type="submit" form="form-finish-buy" className="btn-finish-buy">Finalizar compra</button>
             </div>
         </div>
-    </div>) : (
+    </div>
+    }
+    const CartFinishPaid = ()=>{
         <div className="container-cart">
-            <div className="cart-finish-buy">
-                <div className="cart-finish-paid">
-                    <h1>¡Compra Realizada!</h1>
-                    <div className="cart-finish-order">
-                    <h2>Número de orden generada</h2>
-                    <h3>{order}</h3>
-                    <p>Guarda tu número de orden</p>
-                    </div>
-                    <Link to='/' className="btn-volver-inicio">Volver a Inicio</Link>
+        <div className="cart-finish-buy">
+            <div className="cart-finish-paid">
+                <h1>¡Compra Realizada!</h1>
+                <div className="cart-finish-order">
+                <h2>Número de orden generada</h2>
+                <h3>{order}</h3>
+                <p>Guarda tu número de orden</p>
                 </div>
+                <Link to='/' className="btn-volver-inicio">Volver a Inicio</Link>
             </div>
         </div>
-    )
-    )
-    return(
-        (cartLength !== 0) ? (
-            <div className="container-cart">
+    </div>
+    }
+    const CartItemContainer = ()=>{
+        <div className="container-cart">
             <h1>Carrito de compras</h1>
             <div className="container-cart-items">
             {cart.map((items)=> <CartItem key={items.item.id} items={items}/>)}
@@ -131,13 +129,21 @@ const Cart = ()=>{
                 <div className="cart-buy-items">
                     <button onClick={()=> setFinishBuy(!finishBuy)}>Comprar</button>
                 </div>
-        </div>)
-        : (
-            <div className="container-cart-empty">
-                <h1>Tu carrito está vacío</h1>
-                <Link to='/' className="btn-volver-inicio">Volver a Inicio</Link>
-            </div>
-        )
+        </div>
+    }
+    const CartItemContainerEmpy = ()=>{
+        <div className="container-cart-empty">
+        <h1>Tu carrito está vacío</h1>
+        <Link to='/' className="btn-volver-inicio">Volver a Inicio</Link>
+    </div>
+    }
+
+    if(loading) return <Loading />
+    if(finishBuy) return (
+        (!paid) ? (<CartFinishBuy />) : (<CartFinishPaid/>)
+    )
+    return(
+        (cartLength !== 0) ? (<CartItemContainer />) : (<CartItemContainerEmpy />)
     )
 }
 export default Cart;
