@@ -69,7 +69,7 @@ const Cart = ()=>{
     }
     if(loading) return <Loading />
     if(finishBuy) return (
-        (!paid) ? (<CartFinishBuy generateOrder={generateOrder} setNombre={setNombre} setApellido={setApellido} setTelefono={setTelefono} setMail={setMail}/>) : (<CartFinishPaid order={order}/>)
+        (!paid) ? (<CartFinishBuy generateOrder={generateOrder} nombre={nombre} apellido={apellido} telefono={telefono} mail={mail} setNombre={setNombre} setApellido={setApellido} setTelefono={setTelefono} setMail={setMail}/>) : (<CartFinishPaid order={order}/>)
     )
     return(
         (cartLength !== 0) ? (<CartItemListContainer setFinishBuy={setFinishBuy} finishBuy={finishBuy} />) : (<CartItemContainerEmpty />)
