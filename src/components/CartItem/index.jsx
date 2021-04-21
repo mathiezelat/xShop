@@ -16,8 +16,8 @@ const CartItem = ({items})=>{
                     </div>
                 </div>
                 <div className="cart-info-contain">
-                    <div className="cart-name-contain">
-                        <h2>{item.name}</h2>
+                    <div className="cart-title-contain">
+                        <h2>{item.title}</h2>
                     </div>
                     <div className="cart-quantity-contain">
                         <p>{quantity}</p>

@@ -48,7 +48,7 @@ $font-primario: 'Poppins', sans-serif;
 .item-content{
     overflow: hidden;
 }
-.name-item{
+.title-item{
     width: 260px;
     overflow: hidden;
     display: flex;
@@ -149,7 +149,7 @@ $font-primario: 'Poppins', sans-serif;
         align-items: flex-start;
         width: 190px;
     }
-    .name-item{
+    .title-item{
         width: 190px;
         overflow: hidden;
         margin-left: 5px;
@@ -231,7 +231,7 @@ $font-primario: 'Poppins', sans-serif;
         align-items: flex-start;
         width: 175px;
     }
-    .name-item{
+    .title-item{
         width: 175px;
         overflow: hidden;
         margin-left: 5px;
@@ -312,7 +312,7 @@ $font-primario: 'Poppins', sans-serif;
         align-items: flex-start;
         width: 150px;
     }
-    .name-item{
+    .title-item{
         width: 150px;
         overflow: hidden;
         margin-left: 5px;

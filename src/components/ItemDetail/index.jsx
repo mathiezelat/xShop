@@ -36,8 +36,8 @@ const ItemDetail = ({item = null})=>{
                     <div className="item-detail-vendidos">
                         <p>Nuevo | {item.vendidos} vendidos</p>
                     </div>
-                    <div className="item-detail-name">
-                        <h1>{item.name}</h1>
+                    <div className="item-detail-title">
+                        <h1>{item.title}</h1>
                     </div>
                     {(item.destacado) ? (
                         <div className="item-detail-destacado">

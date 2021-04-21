@@ -16,8 +16,8 @@ const Cart = ()=>{
     const [loading, setLoading] = useState(false)
     const [finishBuy, setFinishBuy] = useState(false)
     const [paid, setPaid] = useState(false)
-    const [order, setOrder] = useState(null)
-    const [user, setUser] = useState({nombre: null, apellido: null, telefono: null, mail: null})
+    const [order, setOrder] = useState('')
+    const [user, setUser] = useState({nombre: '', apellido: '', telefono: '', mail: ''})
     const {cart,clear,cartLength,cartPrice} = useContext(CartContext);
     const {nombre,apellido,telefono,mail} = user;
     useEffect(()=>{
@@ -52,10 +52,10 @@ const Cart = ()=>{
         orden.total = cartPrice
         orden.items = cart.map(cartItem => {
             const id = cartItem.item.id;
-            const name = cartItem.item.name;
+            const title = cartItem.item.title;
             const price = cartItem.item.price * cartItem.quantity;
             const quantity = cartItem.quantity;
-            return {id,name,price,quantity}})
+            return {id,title,price,quantity}})
         orders(orden).then(({id})=>{setOrder(id)})
                         .catch( err => {console.log(err)})
                             .finally(()=>{clear();setPaid(true); setLoading(false)})

@@ -17,8 +17,8 @@ const Item = ({item})=> {
 
                     </div>
                     <div className="item-content">
-                    <div className="name-item">
-                        <h3>{item.name}</h3>
+                    <div className="title-item">
+                        <h3>{item.title}</h3>
                     </div>
                     <div className="price-item">
                         <p>{FormatNumber(item.price)}</p>
