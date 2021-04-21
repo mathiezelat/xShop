@@ -14,10 +14,8 @@ const onClickUp = () => {
     window.scrollTo(0,0)
 }
 
-
-
 const Cart = ()=>{
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const [finishBuy, setFinishBuy] = useState(false)
     const [paid, setPaid] = useState(false)
     const [order, setOrder] = useState(null)
@@ -28,7 +26,6 @@ const Cart = ()=>{
 
     const {cart,clear,cartLength,cartPrice} = useContext(CartContext);
     useEffect(()=>{
-        setLoading(false)
         return(()=>{
             onClickUp()
             setLoading(true)
