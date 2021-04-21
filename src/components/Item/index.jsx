@@ -1,23 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FormatNumber, onClickUp } from "../../utils";
 import './Item.scss'
 
-const onClickUp = () => {
-    window.scrollTo(0,0)
-}
-
-const FormatNumber = (number) => {
-    return (
-(number) ? 
-    <span style={{ color: "#333" }}>
-        {new Intl.NumberFormat("ES-AR", {
-        style: "currency",
-        currency: "ARS"
-        }).format(number)}
-    </span>
-    : null
-    );
-}
 
 const Item = ({item})=> {
     return (

@@ -23,6 +23,7 @@ $color-secundario: #ff9900;
     align-items: center;
     h3{
         background-color: #ff990077;
+        font-size: 26px;
         font-weight: 300;
         padding: 5px 10px;
         margin-top: 10px;
@@ -32,5 +33,11 @@ $color-secundario: #ff9900;
         -moz-border-radius: 5px;
         -ms-border-radius: 5px;
         -o-border-radius: 5px;
+    }
+    h4{
+        font-weight: 300;
+    }
+    p{
+        color: red;
     }
 }

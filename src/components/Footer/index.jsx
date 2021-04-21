@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import './Footer.scss';
-const onClickUp = () => {
-    window.scrollTo(0,0)
-}
+import { onClickUp } from '../../utils';
 const Footer = () =>{
     return(
         <footer>

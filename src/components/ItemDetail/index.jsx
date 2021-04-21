@@ -3,23 +3,8 @@ import './ItemDetail.scss';
 import ItemCount from '../ItemCount';
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import { FormatNumber, onClickUp } from "../../utils";
 
-const onClickUp = () => {
-    window.scrollTo(0,0)
-}
-
-const FormatNumber = (number) => {
-    return (
-    (number) ? 
-        <span style={{ color: "green" }}>
-            {new Intl.NumberFormat("ES-AR", {
-            style: "currency",
-            currency: "ARS"
-            }).format(number)}
-        </span>
-    : null
-    );
-}
 const ItemDetail = ({item = null})=>{
     const [count, setCount] = useState(0)
     const {cart, addItem} = useContext(CartContext);

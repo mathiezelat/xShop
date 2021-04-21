@@ -10,6 +10,7 @@ const CartFinishPaid = ({order})=>{
                 <h2>Número de orden generado</h2>
                 <h3>{order}</h3>
                 <p>Guarda tu número de orden</p>
+                <h4>¡Qué disfrutes tu compra!</h4>
                 </div>
                 <Link to='/' className="btn-volver-inicio">Volver a Inicio</Link>
             </div>

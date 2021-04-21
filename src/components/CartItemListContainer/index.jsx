@@ -2,19 +2,8 @@ import React, { useContext } from 'react';
 import './CartItemListContainer.scss'
 import CartItem from '../CartItem'
 import { CartContext } from "../../context/CartContext";
+import { FormatNumber } from "../../utils";
 
-const FormatNumber = (number) => {
-    return (
-(number) ? 
-    <span style={{ color: "#000" }}>
-        {new Intl.NumberFormat("ES-AR", {
-        style: "currency",
-        currency: "ARS"
-        }).format(number)}
-    </span>
-    : null
-    );
-}
 const CartItemListContainer = ({setFinishBuy, finishBuy})=>{   
     const {cart,clear,cartLength,cartPrice} = useContext(CartContext);
     return(

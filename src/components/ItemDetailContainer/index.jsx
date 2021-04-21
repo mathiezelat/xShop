@@ -3,7 +3,7 @@ import ItemDetail from "../ItemDetail";
 import ProductNotFound from "../ProductNotFound";
 import { useParams } from 'react-router-dom';
 import { Loading } from "../Loading";
-import getItemsDetail from "../../services/getItemsDetail";
+import{ getItem } from "../../services";
 
 
 const ItemDetailContainer = ()=>{
@@ -14,7 +14,7 @@ const ItemDetailContainer = ()=>{
     const {itemId} = useParams()
     useEffect(() => {
         setLoading(true);
-        getItemsDetail(itemId).then((respuesta)=>{
+        getItem(itemId).then((respuesta)=>{
             if (respuesta.exists){
                 setItem(() => {
                     return {id:respuesta.id, ...respuesta.data()}

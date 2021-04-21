@@ -4,7 +4,7 @@ import ItemList from '../ItemList'
 import { useParams } from 'react-router-dom';
 import Error404 from "../Error404";
 import { Loading } from "../Loading";
-import getItems from "../../services/getItems";
+import { getItems } from "../../services";
 
 
 const ItemListContainer = ({name})=> {

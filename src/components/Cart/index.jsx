@@ -8,23 +8,18 @@ import {getFirestore} from '../../firebase'
 import CartItemListContainer from '../CartItemListContainer';
 import CartFinishBuy from '../CartFinishBuy';
 import CartFinishPaid from '../CartFinishPaid';
-import CartItemContainerEmpty from '../CartItemContainerEmpty';
+import CartItemContainerEmpty from '../CartItemListContainerEmpty';
+import { onClickUp } from '../../utils';
 
-const onClickUp = () => {
-    window.scrollTo(0,0)
-}
 
 const Cart = ()=>{
     const [loading, setLoading] = useState(false)
     const [finishBuy, setFinishBuy] = useState(false)
     const [paid, setPaid] = useState(false)
     const [order, setOrder] = useState(null)
-    const [nombre, setNombre] = useState(null)
-    const [apellido, setApellido] = useState(null)
-    const [telefono, setTelefono] = useState(null)
-    const [mail, setMail] = useState(null)
-
+    const [user, setUser] = useState({nombre: null, apellido: null, telefono: null, mail: null})
     const {cart,clear,cartLength,cartPrice} = useContext(CartContext);
+    const {nombre,apellido,telefono,mail} = user;
     useEffect(()=>{
         return(()=>{
             onClickUp()
@@ -66,7 +61,7 @@ const Cart = ()=>{
     }
     if(loading) return <Loading />
     if(finishBuy) return (
-        (!paid) ? (<CartFinishBuy generateOrder={generateOrder} nombre={nombre} apellido={apellido} telefono={telefono} mail={mail} setNombre={setNombre} setApellido={setApellido} setTelefono={setTelefono} setMail={setMail}/>) : (<CartFinishPaid order={order}/>)
+        (!paid) ? (<CartFinishBuy generateOrder={generateOrder} user={user} setUser={setUser} />) : (<CartFinishPaid order={order}/>)
     )
     return(
         (cartLength !== 0) ? (<CartItemListContainer setFinishBuy={setFinishBuy} finishBuy={finishBuy} />) : (<CartItemContainerEmpty />)
