@@ -48,7 +48,7 @@ const ItemDetail = ({item = null})=>{
                         <p>{FormatNumber(item.price)}</p>
                     </div>
                     <div className="item-detail-desc">
-                        <p>{item.info}</p>
+                        <p>{item.description}</p>
                     </div>
                     {(item.envio) ? (
                         <div className="item-detail-envio">

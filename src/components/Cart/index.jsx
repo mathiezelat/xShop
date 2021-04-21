@@ -25,15 +25,14 @@ const Cart = ()=>{
             onClickUp()
             setLoading(true)})
     },[])
-    const orders = (orden)=>{
+    const createOrder = (orden)=>{
         const db = getFirestore();
         const orders = db.collection("orders")
         return orders.add(orden)
     }
     const ItemsToUpdate = ()=>{
         const db = getFirestore();
-        const itemsToUpdate = db.collection('items').where(
-            firebase.firestore.FieldPath.documentId(), 'in', cart.map(i => i.item.id))
+        const itemsToUpdate = db.collection('items').where(firebase.firestore.FieldPath.documentId(), 'in', cart.map(i => i.item.id))
         const batch = db.batch()
         itemsToUpdate.get().then(collection=>{
             collection.docs.forEach(docSnapshot => {
@@ -56,7 +55,7 @@ const Cart = ()=>{
             const price = cartItem.item.price * cartItem.quantity;
             const quantity = cartItem.quantity;
             return {id,title,price,quantity}})
-        orders(orden).then(({id})=>{setOrder(id)})
+        createOrder(orden).then(({id})=>{setOrder(id)})
                         .catch( err => {console.log(err)})
                             .finally(()=>{clear();setPaid(true); setLoading(false)})
         ItemsToUpdate()

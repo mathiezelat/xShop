@@ -24,7 +24,7 @@ const Item = ({item})=> {
                         <p>{FormatNumber(item.price)}</p>
                     </div>
                     <div className="desc-item">
-                        <p>{item.info}</p>
+                        <p>{item.description}</p>
                     </div>
                     </div>
                 </div>
