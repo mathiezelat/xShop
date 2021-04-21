@@ -23,13 +23,29 @@ const Cart = ()=>{
     useEffect(()=>{
         return(()=>{
             onClickUp()
-            setLoading(true)
-        })
+            setLoading(true)})
     },[])
-    const generateOrder = ()=>{
-        setLoading(true)
+    const orders = (orden)=>{
         const db = getFirestore();
         const orders = db.collection("orders")
+        return orders.add(orden)
+    }
+    const ItemsToUpdate = ()=>{
+        const db = getFirestore();
+        const itemsToUpdate = db.collection('items').where(
+            firebase.firestore.FieldPath.documentId(), 'in', cart.map(i => i.item.id))
+        const batch = db.batch()
+        itemsToUpdate.get().then(collection=>{
+            collection.docs.forEach(docSnapshot => {
+                batch.update(docSnapshot.ref,{
+                    stock: docSnapshot.data().stock - cart.find(item => item.item.id === docSnapshot.id).quantity,
+                    vendidos: docSnapshot.data().vendidos + cart.find(item => item.item.id === docSnapshot.id).quantity
+                })})
+            batch.commit()
+        })
+    }
+    const generateOrder = ()=>{
+        setLoading(true)
         let orden = {}
         orden.date = firebase.firestore.Timestamp.fromDate(new Date())
         orden.buyer = {name: `${nombre} ${apellido}`, phone: telefono, email: mail}
@@ -39,25 +55,11 @@ const Cart = ()=>{
             const name = cartItem.item.name;
             const price = cartItem.item.price * cartItem.quantity;
             const quantity = cartItem.quantity;
-            return {id,name,price,quantity}
-        })
-        orders.add(orden)
-        .then(({id})=>{setOrder(id)})
-        .catch( err => {console.log(err)})
-        .finally(()=>{clear();setPaid(true); setLoading(false)})
-        const itemsToUpdate = db.collection('items').where(
-            firebase.firestore.FieldPath.documentId(), 'in', cart.map(i => i.item.id)
-        )
-        const batch = db.batch()
-        itemsToUpdate.get().then(collection=>{
-            collection.docs.forEach(docSnapshot => {
-                batch.update(docSnapshot.ref,{
-                    stock: docSnapshot.data().stock - cart.find(item => item.item.id === docSnapshot.id).quantity,
-                    vendidos: docSnapshot.data().vendidos + cart.find(item => item.item.id === docSnapshot.id).quantity
-                })
-            })
-            batch.commit()
-        })
+            return {id,name,price,quantity}})
+        orders(orden).then(({id})=>{setOrder(id)})
+                        .catch( err => {console.log(err)})
+                            .finally(()=>{clear();setPaid(true); setLoading(false)})
+        ItemsToUpdate()
     }
     if(loading) return <Loading />
     if(finishBuy) return (
