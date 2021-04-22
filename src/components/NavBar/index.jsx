@@ -45,9 +45,9 @@ const NavBar = () =>{
                         <li><NavLink to={`/category/Watch`} onClick={DropSlide}>Watch</NavLink></li>
                     </ul>
                     </li>
-                    <li><NavLink to='/nosotros' activeClassName="active" >Nosotros</NavLink></li>
-                    <li><NavLink to='/ayuda' activeClassName="active" >Ayuda</NavLink></li>
-                    <CartWidget />
+                    <li><NavLink to='/nosotros' activeClassName="active" onClick={ClickUpSlideOff} >Nosotros</NavLink></li>
+                    <li><NavLink to='/ayuda' activeClassName="active" onClick={ClickUpSlideOff}>Ayuda</NavLink></li>
+                    <CartWidget onClick={ClickUpSlideOff} />
                 </ul>
                 <div className={`burger ${activeSlide ? 'toggle' : ''}`} onClick={SlideNav}>
                     <div className="line1"></div>

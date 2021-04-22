@@ -31,11 +31,17 @@ const Footer = () =>{
                 <div>
                     <div>
                     <h4>Contacto</h4>
+                    <a href="https://www.linkedin.com/in/math%C3%ADas-ezequiel-latr%C3%B3nico/" target="_blank" rel="noopener noreferrer">
+                        <img src="/images/icon-linkedin.svg" width="25" alt="Linkedin"/>
+                    </a>
                     </div>
                 </div>
                 <div>
                     <div>
                     <h4>Redes</h4>
+                    <a href="https://github.com/mathiezelat/xShop" target="_blank" rel="noopener noreferrer">
+                        <img src="/images/github.svg" width="25" alt="GitHub"/>
+                    </a>
                     </div>
                 </div>
             </div>
