@@ -1,0 +1,47 @@
+///////////////////////VAR////////////////////////////////////////
+
+$color-primario: #232f3e;
+$color-primario-hover: #314053;
+$color-primario-active: #3d526e;
+$color-primario-disable: #444b55;
+$color-texto-primario: rgb(231, 231, 231); 
+$color-texto-primario-disable: rgb(185, 184, 184); 
+$font-primario: 'Poppins', sans-serif; 
+
+//////////////////////////////////////////////////////////////////
+.cart-item-count-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 75px;
+    p{
+        font-family: $font-primario;
+    }
+    button{
+        font-family: $font-primario;
+        width: 20px;
+        background-color: $color-primario;
+        color: $color-texto-primario;
+        border-radius: 5px;
+        height: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        cursor: pointer;
+        font-size: 20px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+        &:hover{
+            background-color: $color-primario-hover;
+        }
+        &:disabled{
+            cursor: default;
+            background-color: $color-primario-disable;
+            color: $color-texto-primario-disable;
+        }
+}
+}

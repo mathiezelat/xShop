@@ -7,6 +7,8 @@ import Error404 from './components/Error404';
 import Footer from './components/Footer';
 import {CartProviderContext} from './context/CartContext';
 import Cart from './components/Cart';
+import Help from './components/Help';
+import Nosotros from './components/Nosotros';
 
 const App = () => {
   return (
@@ -28,7 +30,15 @@ const App = () => {
         <Route path='/item/:itemId'>
           <ItemDetailContainer />
         </Route>
+
+        <Route path='/nosotros'>
+          <Nosotros/>
+        </Route>
         
+        <Route path='/ayuda'>
+          <Help/>
+        </Route>
+
         <Route path='/cart'>
           <Cart/>
         </Route>

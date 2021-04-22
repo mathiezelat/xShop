@@ -3,10 +3,12 @@ import './CartItem.scss';
 
 import { CartContext } from "../../context/CartContext";
 import { FormatNumber } from '../../utils';
+import CartItemCount from '../CartItemCount';
 
 const CartItem = ({items})=>{
-    const {removeItem} = useContext(CartContext);
+    const {removeItem, removeOneItem, addOneItem} = useContext(CartContext);
     const {item, quantity} = items;
+
     return(
         <div className="cart-item">
             <div className="cart-item-contain">
@@ -20,12 +22,11 @@ const CartItem = ({items})=>{
                         <h2>{item.title}</h2>
                     </div>
                     <div className="cart-quantity-contain">
-                        <p>{quantity}</p>
+                        <CartItemCount items={items} removeOneItem={removeOneItem} addOneItem={addOneItem}/>
                     </div>
                     <div className="cart-price-contain">
                         <p>{FormatNumber(item.price * quantity)}</p>
                     </div>
-                    
                     <div className="cart-btn-remove-item-contain">
                         <img src="/images/delete.svg" alt="" onClick={()=>removeItem(item.id)} />
                     </div>

@@ -10,7 +10,7 @@ const CartItemListContainer = ({setFinishBuy, finishBuy})=>{
     <div className="container-cart">
         <h1>Carrito de compras</h1>
         <div className="container-cart-items">
-        {cart.map((items)=> <CartItem key={items.item.id} items={items}/>)}
+        {cart.map((items)=> <CartItem key={items.item.id} items={items}/>).sort((a, b) =>a.props.items.item.title.localeCompare(b.props.items.item.title) )}
         </div>
         <div className="cart-contain-info-items">
             <div className="btn-clear-cart">

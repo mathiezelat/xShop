@@ -34,6 +34,18 @@ export const CartProviderContext = ({children}) =>{
         setCart(newCart)
         localStorage.setItem("cart", JSON.stringify(newCart))
     }
+    const removeOneItem = (itemId) =>{
+        const {quantity} = cart.find(e => e.item.id === itemId.id)
+        const newCart = cart.filter(e => e.item.id !== itemId.id)
+        setCart([...newCart, { item: itemId , quantity: quantity - 1 }])
+        localStorage.setItem("cart", JSON.stringify([...newCart, { item: itemId , quantity: quantity - 1 }]))
+    }
+    const addOneItem = (itemId) =>{
+        const {quantity} = cart.find(e => e.item.id === itemId.id)
+        const newCart = cart.filter(e => e.item.id !== itemId.id)
+        setCart([...newCart, { item: itemId , quantity: quantity + 1 }])
+        localStorage.setItem("cart", JSON.stringify([...newCart, { item: itemId , quantity: quantity + 1 }]))
+    }
     const clear = ()=>{
         setCart([])
         localStorage.setItem("cart", JSON.stringify([]))
@@ -42,7 +54,7 @@ export const CartProviderContext = ({children}) =>{
         return cart.findIndex(e=> e.item.id === id)
     }
     return(
-        <CartContext.Provider value={ {cart,addItem,removeItem,clear,isInCart,cartLength, cartPrice} } >
+        <CartContext.Provider value={ {cart,addItem,removeItem,addOneItem,removeOneItem,clear,isInCart,cartLength, cartPrice} } >
             {children}
         </CartContext.Provider>
     )
