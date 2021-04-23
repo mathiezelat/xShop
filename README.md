@@ -2,7 +2,7 @@
 
 Es una página **e-commerce** inspirada en otras páginas del mismo estilo, mi idea como principal es una tienda online _simple_ y _fácil_ de navegar para los _usuarios_, que tiene como objetivo ser _rápida_ para que los _usuarios_ esperen lo minimo posible. :sparkles:
 
-## Inicializar el proyecto
+## Inicializar el proyecto 👨‍💻
 
 - Para poder instalar las dependencias basta con un _npm i_
 - Correr el proyecto en tu computadora seria con un _npm start_
@@ -11,6 +11,10 @@ Es una página **e-commerce** inspirada en otras páginas del mismo estilo, mi i
 ## Visita la página 💡
 
 - Click [Acá](https://xshop.netlify.app/) para ir a la _página_.
+
+## Vista previa de la página 🎬
+
+- ![Preview xShop](xshop-preview.gif)
 
 ## Construido con 🛠️
 

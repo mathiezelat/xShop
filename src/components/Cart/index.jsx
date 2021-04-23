@@ -11,13 +11,12 @@ import CartFinishPaid from '../CartFinishPaid';
 import CartItemContainerEmpty from '../CartItemListContainerEmpty';
 import { onClickUp } from '../../utils';
 
-
 const Cart = ()=>{
     const [loading, setLoading] = useState(false)
     const [finishBuy, setFinishBuy] = useState(false)
     const [paid, setPaid] = useState(false)
     const [order, setOrder] = useState('')
-    const [user, setUser] = useState({nombre: '', apellido: '', telefono: '', mail: ''})
+    const [user, setUser] = useState({nombre: '', apellido: '', telefono: '', mail: '', mail2Value: ''})
     const {cart,clear,cartLength,cartPrice} = useContext(CartContext);
     const {nombre,apellido,telefono,mail} = user;
     useEffect(()=>{
