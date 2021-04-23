@@ -14,7 +14,7 @@ Es una página **e-commerce** inspirada en otras páginas del mismo estilo, mi i
 
 ## Vista previa de la página 🎬
 
-- ![Preview xShop](xshop-preview.gif)
+![Preview xShop](xshop-preview.gif)
 
 ## Construido con 🛠️
 
