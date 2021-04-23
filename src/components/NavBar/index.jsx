@@ -47,7 +47,7 @@ const NavBar = () =>{
                     </li>
                     <li><NavLink to='/nosotros' activeClassName="active" onClick={ClickUpSlideOff} >Nosotros</NavLink></li>
                     <li><NavLink to='/ayuda' activeClassName="active" onClick={ClickUpSlideOff}>Ayuda</NavLink></li>
-                    <CartWidget onClick={ClickUpSlideOff} />
+                    <CartWidget ClickUpSlideOff={ClickUpSlideOff} />
                 </ul>
                 <div className={`burger ${activeSlide ? 'toggle' : ''}`} onClick={SlideNav}>
                     <div className="line1"></div>
