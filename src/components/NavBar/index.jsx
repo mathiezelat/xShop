@@ -38,7 +38,7 @@ const NavBar = () =>{
                     </NavLink>
                         <ul className={`sub-nav-links ${activeDropdown ? 'active-subnav' : ''}`}>
                             {categorias.map(categoria => {
-                                return (<li><Link to={`/category/${categoria}`} onClick={dropSlide}>{categoria}</Link></li>)
+                                return (<li key={categoria}><Link to={`/category/${categoria}`} onClick={dropSlide}>{categoria}</Link></li>)
                             })}
                         </ul>
                     </li>

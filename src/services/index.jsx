@@ -9,7 +9,6 @@ export const getItems = (category)=>{
     const promise = filter.get();
     return promise;
 }
-
 export const getItem = (id)=>{
     const db = getFirestore();
     const itemsCollection = db.collection('items');
@@ -21,7 +20,6 @@ export const createOrder = (orden)=>{
     const orders = db.collection("orders")
     return orders.add(orden)
 }
-
 export const itemsToUpdate = (cart)=>{
     const db = getFirestore();
     const itemsToUpdate = db.collection('items').where(firebase.firestore.FieldPath.documentId(), 'in', cart.map(i => i.item.id))
