@@ -14,44 +14,41 @@ export const CartProviderContext = ({children}) =>{
         return;
     }, [])
     useEffect(()=>{
-        setCartLenght(cart.reduce((prev, next) => {return prev + next.quantity}, 0))
-        setCartPrice(cart.reduce((prev, next) => {return prev + next.quantity * next.item.price}, 0))
+        setCartLenght(cart.reduce((prev, next) => {return prev + next.quantity}, 0));
+        setCartPrice(cart.reduce((prev, next) => {return prev + next.quantity * next.item.price}, 0));
+        localStorage.setItem("cart", JSON.stringify(cart));
         return;
     }, [cart])
+    const findAndFilter = (cart, newItem)=>{
+        const {quantity} = cart.find(e => e.item.id === newItem.id);
+            const newCart = cart.filter(e => e.item.id !== newItem.id);
+            return {newCart: newCart,quantity: quantity};
+    }
     const addItem = (newItem, newQuantity)=>{
         if (isInCart(newItem.id) === -1){
-            setCart([...cart, { item: newItem, quantity: newQuantity }])
-            localStorage.setItem("cart", JSON.stringify([...cart, { item: newItem, quantity: newQuantity }]))
+            setCart([...cart, { item: newItem, quantity: newQuantity }]);
         } else {
-            const {quantity} = cart.find(e => e.item.id === newItem.id)
-            const newCart = cart.filter(e => e.item.id !== newItem.id)
-            setCart([...newCart, { item: newItem , quantity: quantity + newQuantity }])
-            localStorage.setItem("cart", JSON.stringify([...newCart, { item: newItem , quantity: quantity + newQuantity }]))
+            const {newCart, quantity} = findAndFilter(cart, newItem);
+            setCart([...newCart, { item: newItem , quantity: quantity + newQuantity }]);
         }
     }
     const removeItem = (itemId) =>{
-        const newCart = cart.filter(e=>e.item.id !== itemId)
-        setCart(newCart)
-        localStorage.setItem("cart", JSON.stringify(newCart))
+        const newCart = cart.filter(e=>e.item.id !== itemId);
+        setCart(newCart);
     }
     const removeOneItem = (itemId) =>{
-        const {quantity} = cart.find(e => e.item.id === itemId.id)
-        const newCart = cart.filter(e => e.item.id !== itemId.id)
-        setCart([...newCart, { item: itemId , quantity: quantity - 1 }])
-        localStorage.setItem("cart", JSON.stringify([...newCart, { item: itemId , quantity: quantity - 1 }]))
+        const {newCart, quantity} = findAndFilter(cart, itemId);
+        setCart([...newCart, { item: itemId , quantity: quantity - 1 }]);
     }
     const addOneItem = (itemId) =>{
-        const {quantity} = cart.find(e => e.item.id === itemId.id)
-        const newCart = cart.filter(e => e.item.id !== itemId.id)
-        setCart([...newCart, { item: itemId , quantity: quantity + 1 }])
-        localStorage.setItem("cart", JSON.stringify([...newCart, { item: itemId , quantity: quantity + 1 }]))
+        const {newCart, quantity} = findAndFilter(cart, itemId);
+        setCart([...newCart, { item: itemId , quantity: quantity + 1 }]);
     }
     const clear = ()=>{
-        setCart([])
-        localStorage.setItem("cart", JSON.stringify([]))
+        setCart([]);
     }
     const isInCart = (id) =>{
-        return cart.findIndex(e=> e.item.id === id)
+        return cart.findIndex(e=> e.item.id === id);
     }
     return(
         <CartContext.Provider value={ {cart,addItem,removeItem,addOneItem,removeOneItem,clear,isInCart,cartLength, cartPrice} } >

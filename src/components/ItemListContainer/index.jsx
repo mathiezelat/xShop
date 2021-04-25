@@ -6,29 +6,25 @@ import Error404 from "../Error404";
 import { Loading } from "../Loading";
 import { getItems } from "../../services";
 
-
-const ItemListContainer = ({name})=> {
+const ItemListContainer = ()=> {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [title, setTitle] = useState(null);
+    const [title, setTitle] = useState('')
     const {categoryId = null} = useParams();
     useEffect( () => {
         setLoading(true)
-        const promise = getItems(categoryId);
-            promise.then((snaptshot)=>{
-                if(snaptshot.size > 0){
-                    setItems(snaptshot.docs.map(doc => {
-                        return {id:doc.id, ...doc.data()}
-                    }));
-                    setTitle(<h2>{name} {categoryId}</h2>);
-                }
-            }).finally(()=>{
-                setLoading(false);
-            })
+        getItems(categoryId)
+        .then((snaptshot)=>{
+            if(snaptshot.size > 0){
+                setItems(snaptshot.docs.map(doc => {
+                return {id:doc.id, ...doc.data()}}));}
+            setTitle((categoryId) ? <h2>Categoria {categoryId}</h2> : <h2>Productos Destacados</h2>)
+        })
+        .finally(()=>{setLoading(false);})
         return () => {
             setItems([]);
         };
-    }, [categoryId, name]);
+    }, [categoryId]);
     if (loading) return <Loading/>
     return (
         <div className="container-items-list">

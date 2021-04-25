@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import './CartItem.scss';
 
 import { CartContext } from "../../context/CartContext";
-import { FormatNumber } from '../../utils';
+import { formatNumber } from '../../utils';
 import CartItemCount from '../CartItemCount';
 
 const CartItem = ({items})=>{
@@ -25,7 +25,7 @@ const CartItem = ({items})=>{
                         <CartItemCount items={items} removeOneItem={removeOneItem} addOneItem={addOneItem}/>
                     </div>
                     <div className="cart-price-contain">
-                        <p>{FormatNumber(item.price * quantity)}</p>
+                        <p>{formatNumber(item.price * quantity)}</p>
                     </div>
                     <div className="cart-btn-remove-item-contain">
                         <img src="/images/delete.svg" alt="" onClick={()=>removeItem(item.id)} />

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FormatNumber, onClickUp } from "../../utils";
+import { formatNumber, onClickUp } from "../../utils";
 import './Item.scss'
 
 
@@ -21,7 +21,7 @@ const Item = ({item})=> {
                         <h3>{item.title}</h3>
                     </div>
                     <div className="price-item">
-                        <p>{FormatNumber(item.price)}</p>
+                        <p>{formatNumber(item.price)}</p>
                     </div>
                     <div className="desc-item">
                         <p>{item.description}</p>

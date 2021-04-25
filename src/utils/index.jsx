@@ -2,7 +2,7 @@ export const onClickUp = () => {
     window.scrollTo(0,0)
 }
 
-export const FormatNumber = (number) => {
+export const formatNumber = (number) => {
     return (
     (number) ? 
         <span style={{ color: "green" }}>

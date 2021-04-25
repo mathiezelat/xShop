@@ -3,7 +3,7 @@ import './ItemDetail.scss';
 import ItemCount from '../ItemCount';
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
-import { FormatNumber, onClickUp } from "../../utils";
+import { formatNumber, onClickUp } from "../../utils";
 
 const ItemDetail = ({item = null})=>{
     const [count, setCount] = useState(0)
@@ -24,6 +24,14 @@ const ItemDetail = ({item = null})=>{
             onClickUp()
         })
     }, [])
+    const TerminarCompra = ()=>{
+        return(
+        <div className="item-cart-count-full">
+                    <h4>Tenes {cartCount(count)} productos en el carrito</h4>
+                    <Link to='/cart'><button className="btn-end-buy" >Terminar compra</button></Link>
+        </div>
+        )
+    }
     return(
         <div className="item-detail">
             <div className="item-detail-image-contain">
@@ -45,7 +53,7 @@ const ItemDetail = ({item = null})=>{
                         </div>
                     ) : null}
                     <div className="item-detail-price">
-                        <p>{FormatNumber(item.price)}</p>
+                        <p>{formatNumber(item.price)}</p>
                     </div>
                     <div className="item-detail-desc">
                         <p>{item.description}</p>
@@ -64,30 +72,14 @@ const ItemDetail = ({item = null})=>{
                     ) : null}
                 </div>
                 <div className="item-count-add">
-                    {(item.stock - cartCount(count) !== 0) ? (count === 0 ? (<>
-                    <ItemCount stock={item.stock - cartCount(count)} initial={cartCount(count) ? cartCount(count) - cartCount(count) + 1: 1} onAdd={addHandler} />
-                    {(cartCount(count)) ? (
-                    <div className="item-cart-count-full">
-                    <h4>Tenes {cartCount(count)} productos en el carrito</h4>
-                    <Link to='/cart'><button className="btn-end-buy" >Terminar compra</button></Link>
-                    </div>
-                    ) : null}
-                    </>) : 
-                    (
-                        <div className="item-cart-count-full">
-                        <h4>Tenes {cartCount(count)} productos en el carrito</h4>
-                        <Link to='/cart'><button className="btn-end-buy" >Terminar compra</button></Link>
-                        </div>
-                    )) :
-                    ((cartCount(count) !== 0) ? 
-                    (<div className="item-cart-count-full">
-                    <h4>Tenes {cartCount(count)} productos en el carrito</h4>
-                    <Link to='/cart'><button className="btn-end-buy" >Terminar compra</button></Link>
-                    </div>) : 
-                    (<div className="item-cart-count-full">
-                    <h2>Sin Stock</h2>
-                    </div>
-                    ))}        
+                    {(item.stock - cartCount(count) !== 0) ? 
+                        (count === 0 ? (
+                            <>
+                                <ItemCount stock={item.stock - cartCount(count)} initial={cartCount(count) ? cartCount(count) - cartCount(count) + 1: 1} onAdd={addHandler} />
+                                {(cartCount(count)) ? (<TerminarCompra />) : null}
+                            </>
+                        ) : (<TerminarCompra />)) 
+                    : ((cartCount(count) !== 0) ? (<TerminarCompra />) : (<div className="item-cart-count-full"><h2>Sin Stock</h2></div>))}        
                 </div>
             </div>
         </div>

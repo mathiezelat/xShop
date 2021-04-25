@@ -73,6 +73,18 @@ $color-secundario: #ff9900;
         }
 }
 }
+.container-cart-empty{
+    font-family: $font-primario;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 30vh;
+    h1{
+        font-weight: 300;
+    }
+}
+
 @media screen and (max-width:1200px) and (min-width:768px){
     .cart-contain-info-items{
         width: 720px;

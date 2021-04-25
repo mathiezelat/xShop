@@ -1,11 +1,17 @@
 import React, { useContext } from 'react';
 import './CartItemListContainer.scss'
 import CartItem from '../CartItem'
+import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
-import { FormatNumber } from "../../utils";
+import { formatNumber } from "../../utils";
 
 const CartItemListContainer = ({setFinishBuy, finishBuy})=>{   
     const {cart,clear,cartLength,cartPrice} = useContext(CartContext);
+    if (!cartLength) return (
+    <div className="container-cart-empty">
+    <h1>Tu carrito está vacío</h1>
+    <Link to='/' className="btn-volver-inicio">Volver a Inicio</Link>
+    </div>)
     return(
     <div className="container-cart">
         <h1>Carrito de compras</h1>
@@ -18,7 +24,7 @@ const CartItemListContainer = ({setFinishBuy, finishBuy})=>{
             </div>  
             <div className="cart-info-items-total">
                 <p>Cantidad de productos: {cartLength}</p>
-                <p>Total: {FormatNumber(cartPrice)}</p>
+                <p>Total: {formatNumber(cartPrice)}</p>
             </div>
         </div>
             <div className="cart-buy-items">

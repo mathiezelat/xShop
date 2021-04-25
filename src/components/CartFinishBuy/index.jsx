@@ -1,6 +1,23 @@
 import './CartFinishBuy.scss'
-const CartFinishBuy = ({generateOrder, user, setUser})=>{
+import { Link } from "react-router-dom";
+const CartFinishBuy = ({generateOrder, user, setUser, paid, order})=>{
     const {nombre, apellido, telefono, mail, mail2Value} = user;
+    if (paid) return (
+        <div className="container-cart">
+        <div className="cart-finish-buy">
+            <div className="cart-finish-paid">
+                <h1>¡Compra Realizada!</h1>
+                <div className="cart-finish-order">
+                <h2>Número de orden generado</h2>
+                <h3>{order}</h3>
+                <p>Guarda tu número de orden</p>
+                <h4>¡Qué disfrutes tu compra!</h4>
+                </div>
+                <Link to='/' className="btn-volver-inicio">Volver a Inicio</Link>
+            </div>
+        </div>
+    </div>
+    )
     return(
     <div className="container-cart">
     <div className="cart-finish-buy">
