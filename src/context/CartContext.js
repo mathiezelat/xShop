@@ -25,7 +25,7 @@ export const CartProviderContext = ({children}) =>{
             return {newCart: newCart,quantity: quantity};
     }
     const addItem = (newItem, newQuantity)=>{
-        if (isInCart(newItem.id) === -1){
+        if (!isInCart(newItem.id)){
             setCart([...cart, { item: newItem, quantity: newQuantity }]);
         } else {
             const {newCart, quantity} = findAndFilter(cart, newItem);
@@ -48,10 +48,10 @@ export const CartProviderContext = ({children}) =>{
         setCart([]);
     }
     const isInCart = (id) =>{
-        return cart.findIndex(e=> e.item.id === id);
+        return cart.find(e=> e.item.id === id);
     }
     return(
-        <CartContext.Provider value={ {cart,addItem,removeItem,addOneItem,removeOneItem,clear,isInCart,cartLength, cartPrice} } >
+        <CartContext.Provider value={ {cart,addItem,removeItem,addOneItem,removeOneItem,clear,cartLength, cartPrice} } >
             {children}
         </CartContext.Provider>
     )
