@@ -24,6 +24,7 @@ const ItemDetail = ({item = null})=>{
             onClickUp()
         })
     }, [])
+    
     const TerminarCompra = ()=>{
         return(
         <div className="item-cart-count-full">
@@ -32,6 +33,27 @@ const ItemDetail = ({item = null})=>{
         </div>
         )
     }
+    const ComprarProducto = ()=>{
+        return (
+            (count === 0 ? (
+                <>
+                    <ItemCount stock={item.stock - cartCount(count)} initial={cartCount(count) ? cartCount(count) - cartCount(count) + 1: 1} onAdd={addHandler} />
+                    {(cartCount(count)) ? (<TerminarCompra />) : null}
+                </>
+            ) : <TerminarCompra />)
+        )
+    }
+    const SinStock = ()=>{
+        return(
+            <div className="item-cart-count-full"><h2>Sin Stock</h2></div>
+        )
+    }
+    const TerminarCompraOSinStock = ()=>{
+        return (
+            (cartCount(count) !== 0) ? <TerminarCompra /> : <SinStock />
+        )
+    }
+    
     return(
         <div className="item-detail">
             <div className="item-detail-image-contain">
@@ -72,14 +94,7 @@ const ItemDetail = ({item = null})=>{
                     ) : null}
                 </div>
                 <div className="item-count-add">
-                    {(item.stock - cartCount(count) !== 0) ? 
-                        (count === 0 ? (
-                            <>
-                                <ItemCount stock={item.stock - cartCount(count)} initial={cartCount(count) ? cartCount(count) - cartCount(count) + 1: 1} onAdd={addHandler} />
-                                {(cartCount(count)) ? (<TerminarCompra />) : null}
-                            </>
-                        ) : (<TerminarCompra />)) 
-                    : ((cartCount(count) !== 0) ? (<TerminarCompra />) : (<div className="item-cart-count-full"><h2>Sin Stock</h2></div>))}        
+                    {(item.stock - cartCount(count) !== 0) ? <ComprarProducto /> : <TerminarCompraOSinStock />}        
                 </div>
             </div>
         </div>
