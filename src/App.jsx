@@ -42,7 +42,6 @@ const App = () => {
         <Route path='/cart'>
           <Cart/>
         </Route>
-
         <Route path='*'>
           <Error404/>
         </Route>

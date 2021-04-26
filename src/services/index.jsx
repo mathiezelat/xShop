@@ -15,6 +15,11 @@ export const getItem = (id)=>{
     const item = itemsCollection.doc(id);
     return item.get();
 }
+export const getCategory = () =>{
+    const db = getFirestore();
+    const categoryCollection = db.collection('categories');
+    return categoryCollection.get()
+}
 export const createOrder = (orden)=>{
     const db = getFirestore();
     const orders = db.collection("orders")

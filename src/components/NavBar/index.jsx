@@ -1,13 +1,21 @@
-import React, { useState} from "react";
+import React, { useEffect, useState} from "react";
 import './NavBar.scss';
 import CartWidget from '../CartWidget/index';
 import {NavLink, Link} from 'react-router-dom';
 import { onClickUp } from "../../utils";
+import { getCategory } from "../../services";
 
 const NavBar = () =>{
     const [activeDropdown, setActiveDropdown] = useState(false);
     const [activeSlide, setActiveSlide] = useState(false);
-    const categorias = ['iMac', 'MacBook', 'iPad', 'iPhone', 'Watch']
+    const [categoria, setCategoria] = useState([])
+    useEffect(()=>{
+        getCategory().then((snaptshot=>{
+            setCategoria(snaptshot.docs.map(doc=>{
+                return {name: doc.name, ...doc.data()}
+            }))
+        }))
+    }, [])
     const slideNav = ()=>{
         setActiveSlide(!activeSlide)
     }
@@ -37,8 +45,8 @@ const NavBar = () =>{
                     <svg className="arrow-expand" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#ffffff"><path d="M24 24H0V0h24v24z" fill="none" opacity="0"/><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"/></svg>
                     </NavLink>
                         <ul className={`sub-nav-links ${activeDropdown ? 'active-subnav' : ''}`}>
-                            {categorias.map(categoria => {
-                                return (<li key={categoria}><Link to={`/category/${categoria}`} onClick={dropSlide}>{categoria}</Link></li>)
+                            {categoria.map(categoria => {
+                                return (<li key={categoria.name}><Link to={`/category/${categoria.name}`} onClick={dropSlide}>{categoria.name}</Link></li>)
                             })}
                         </ul>
                     </li>
