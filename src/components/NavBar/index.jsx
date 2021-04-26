@@ -8,7 +8,7 @@ import { getCategory } from "../../services";
 const NavBar = () =>{
     const [activeDropdown, setActiveDropdown] = useState(false);
     const [activeSlide, setActiveSlide] = useState(false);
-    const [categoria, setCategoria] = useState([])
+    const [categoria, setCategoria] = useState(['Cargando'])
     useEffect(()=>{
         getCategory().then((snaptshot=>{
             setCategoria(snaptshot.docs.map(doc=>{
